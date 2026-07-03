@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clean Master 관리자 상담 메모</title>
+  <style>
+    :root{--navy:#0b1f33;--blue:#0066cc;--bg:#f5f5f7;--line:#e5e7eb;--text:#111827;--muted:#555}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,"Noto Sans KR",Arial,sans-serif}.wrap{max-width:980px;margin:auto;padding:40px 20px}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 16px 45px rgba(15,23,42,.07)}h1{color:var(--navy);font-size:38px;letter-spacing:-.06em}label{display:block;font-weight:900;margin:14px 0 6px;color:var(--navy)}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px;font:inherit}textarea{min-height:130px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:11px 14px;font-weight:900;cursor:pointer}.primary{background:var(--blue);border-color:var(--blue);color:#fff}.result{white-space:pre-wrap;margin-top:16px;background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:18px;padding:16px;line-height:1.65}.top a{color:#475569;text-decoration:none;font-weight:800}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top"><a href="index.html">← 메인으로</a></div>
+    <h1>관리자 상담 메모</h1>
+    <div class="card">
+      <p>고객 상담 내용을 서버 저장 없이 브라우저에서 정리하는 운영자용 메모 화면입니다.</p>
+      <label>고객명 또는 식별명</label><input id="name" placeholder="예: 김OO / 문자문의 고객" />
+      <label>상담 채널</label><select id="channel"><option>전화</option><option>문자</option><option>카카오톡</option><option>네이버 예약</option><option>기타</option></select>
+      <label>서비스 유형</label><select id="type"><option>입주청소</option><option>이사청소</option><option>거주청소</option><option>정기 홈케어</option><option>부분청소</option></select>
+      <label>상담 메모</label><textarea id="memo" placeholder="희망일, 지역, 평수, 요청사항, 견적 안내 내용을 기록하세요."></textarea>
+      <label>후속 조치</label><textarea id="next" placeholder="예: 사진 요청, 방문 가능일 안내, 견적 재확인, 예약 확정 대기"></textarea>
+      <div class="actions"><button class="btn primary" onclick="makeMemo()">메모 정리</button><button class="btn" onclick="copyMemo()">복사</button><button class="btn" onclick="window.print()">인쇄</button></div>
+      <div id="result" class="result">메모 정리 결과가 여기에 표시됩니다.</div>
+    </div>
+  </div>
+<script>
+function makeMemo(){const n=document.getElementById('name').value||'미입력';const c=document.getElementById('channel').value;const t=document.getElementById('type').value;const m=document.getElementById('memo').value||'상담 메모 미입력';const nx=document.getElementById('next').value||'후속 조치 미입력';document.getElementById('result').innerText=`[Clean Master 상담 메모]\n고객: ${n}\n채널: ${c}\n유형: ${t}\n\n상담 내용:\n${m}\n\n후속 조치:\n${nx}\n\n※ 본 화면은 서버 저장 없이 상담 메모를 정리하는 용도입니다.`}async function copyMemo(){try{await navigator.clipboard.writeText(document.getElementById('result').innerText);alert('복사 완료')}catch(e){alert('복사가 지원되지 않는 환경입니다.')}}
+</script>
+</body>
+</html>
