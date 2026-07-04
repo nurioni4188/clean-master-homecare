@@ -4,272 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clean Master 상담관리</title>
-
   <style>
-    :root {
-      --navy: #0b1f33;
-      --blue: #0066cc;
-      --bg: #f5f5f7;
-      --line: #e5e7eb;
-      --text: #111827;
-      --muted: #64748b;
-      --green: #15803d;
-      --amber: #b45309;
-      --red: #b91c1c;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, "Noto Sans KR", Arial, sans-serif;
-      letter-spacing: -0.02em;
-    }
-
-    .wrap {
-      max-width: 1180px;
-      margin: auto;
-      padding: 34px 20px 70px;
-    }
-
-    .top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .top a {
-      color: #475569;
-      text-decoration: none;
-      font-weight: 900;
-    }
-
-    h1 {
-      color: var(--navy);
-      font-size: clamp(34px, 5vw, 54px);
-      letter-spacing: -0.07em;
-      margin: 24px 0 8px;
-    }
-
-    .lead {
-      color: #475569;
-      line-height: 1.7;
-      margin: 0 0 20px;
-    }
-
-    .panel,
-    .card,
-    .stat {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
-    }
-
-    .panel {
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-
-    .login {
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      gap: 10px;
-      align-items: end;
-    }
-
-    label {
-      display: block;
-      font-weight: 900;
-      color: var(--navy);
-      margin-bottom: 7px;
-    }
-
-    input,
-    select {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 11px 12px;
-      font: inherit;
-      background: #fff;
-    }
-
-    .btn {
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 999px;
-      padding: 11px 14px;
-      font-weight: 900;
-      cursor: pointer;
-      color: #334155;
-      white-space: nowrap;
-    }
-
-    .btn.primary {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-    }
-
-    .btn.small {
-      padding: 8px 10px;
-      font-size: 13px;
-    }
-
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .stat {
-      padding: 16px;
-    }
-
-    .stat span {
-      color: var(--muted);
-    }
-
-    .stat b {
-      display: block;
-      color: var(--navy);
-      font-size: 28px;
-      margin-top: 6px;
-    }
-
-    .tools {
-      display: grid;
-      grid-template-columns: 1fr 170px auto auto;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .card {
-      padding: 18px;
-    }
-
-    .tablebox {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 1120px;
-    }
-
-    th,
-    td {
-      border-bottom: 1px solid var(--line);
-      padding: 12px 10px;
-      text-align: left;
-      vertical-align: top;
-      font-size: 14px;
-    }
-
-    th {
-      background: #f8fafc;
-      color: var(--navy);
-    }
-
-    .message {
-      max-width: 260px;
-      white-space: pre-wrap;
-      line-height: 1.5;
-    }
-
-    .badge {
-      display: inline-flex;
-      border-radius: 999px;
-      padding: 5px 9px;
-      font-size: 12px;
-      font-weight: 900;
-      border: 1px solid var(--line);
-      background: #f8fafc;
-    }
-
-    .badge.new {
-      background: #eff6ff;
-      border-color: #bfdbfe;
-      color: #1d4ed8;
-    }
-
-    .badge.contacted {
-      background: #fff7ed;
-      border-color: #fed7aa;
-      color: var(--amber);
-    }
-
-    .badge.done {
-      background: #f0fdf4;
-      border-color: #bbf7d0;
-      color: var(--green);
-    }
-
-    .empty {
-      text-align: center;
-      color: var(--muted);
-      padding: 36px 10px;
-    }
-
-    .error {
-      display: none;
-      margin-bottom: 14px;
-      border: 1px solid #fecaca;
-      background: #fef2f2;
-      color: var(--red);
-      border-radius: 18px;
-      padding: 14px;
-      white-space: pre-wrap;
-      line-height: 1.6;
-    }
-
-    .muted {
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 13px;
-    }
-
-    @media (max-width: 840px) {
-      .login,
-      .tools {
-        grid-template-columns: 1fr;
-      }
-
-      .summary {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+    :root{--navy:#0b1f33;--blue:#4467c9;--bg:#f5f5f7;--line:#e5e7eb;--text:#111827;--muted:#64748b;--green:#15803d;--amber:#b45309;--red:#b91c1c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,"Noto Sans KR",Arial,sans-serif;letter-spacing:-.02em}.wrap{max-width:1180px;margin:auto;padding:34px 20px 70px}.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}.top a{color:#475569;text-decoration:none;font-weight:900}h1{color:var(--navy);font-size:clamp(34px,5vw,54px);letter-spacing:-.07em;margin:24px 0 8px}.lead{color:#475569;line-height:1.7;margin:0 0 20px}.panel,.card,.stat{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 16px 45px rgba(15,23,42,.07)}.panel{padding:20px;margin-bottom:16px}.login{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:end}label{display:block;font-weight:900;color:var(--navy);margin-bottom:7px}input,select{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px;font:inherit;background:#fff}.btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:11px 14px;font-weight:900;cursor:pointer;color:#334155;white-space:nowrap}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn.small{padding:8px 10px;font-size:13px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.stat{padding:16px}.stat span{color:var(--muted)}.stat b{display:block;color:var(--navy);font-size:28px;margin-top:6px}.tools{display:grid;grid-template-columns:1fr 170px auto auto;gap:10px;margin-bottom:16px}.card{padding:18px}.tablebox{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:1120px}th,td{border-bottom:1px solid var(--line);padding:12px 10px;text-align:left;vertical-align:top;font-size:14px}th{background:#f8fafc;color:var(--navy)}.message{max-width:260px;white-space:pre-wrap;line-height:1.5}.badge{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;border:1px solid var(--line);background:#f8fafc}.badge.new{background:#eff6ff;border-color:#bfdbfe;color:#1d4ed8}.badge.contacted{background:#fff7ed;border-color:#fed7aa;color:var(--amber)}.badge.done{background:#f0fdf4;border-color:#bbf7d0;color:var(--green)}.empty{text-align:center;color:var(--muted);padding:36px 10px}.error{display:none;margin-bottom:14px;border:1px solid #fecaca;background:#fef2f2;color:var(--red);border-radius:18px;padding:14px;white-space:pre-wrap;line-height:1.6}.muted{color:var(--muted);line-height:1.6;font-size:13px}@media(max-width:840px){.login,.tools{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
-
 <body>
   <div class="wrap">
-    <div class="top">
-      <a href="index.html">← 메인으로</a>
-      <span class="muted">Clean Master 운영자용 상담관리</span>
-    </div>
-
+    <div class="top"><a href="index.html">← 메인으로</a><span class="muted">Clean Master 운영자용 상담관리</span></div>
     <h1>상담관리</h1>
-    <p class="lead">
-      Supabase에 접수된 상담 요청을 조회하고 상태값을
-      <b>new / contacted / done</b>으로 관리합니다.
-    </p>
+    <p class="lead">Supabase에 접수된 상담 요청을 조회하고 상태값을 <b>new / contacted / done</b>으로 관리합니다.</p>
 
     <div class="panel login">
-      <div>
-        <label for="token">관리자 비밀번호</label>
-        <input id="token" type="password" placeholder="Vercel ADMIN_TOKEN 입력" />
-      </div>
+      <div><label for="token">관리자 비밀번호</label><input id="token" type="password" placeholder="Vercel ADMIN_TOKEN 입력" /></div>
       <button class="btn primary" onclick="saveTokenAndLoad()">목록 조회</button>
       <button class="btn" onclick="clearSavedToken()">저장값 삭제</button>
     </div>
@@ -283,12 +29,7 @@
 
     <div class="tools">
       <input id="keyword" placeholder="이름, 연락처, 지역, 서비스, 문의내용 검색" oninput="renderTable()" />
-      <select id="statusFilter" onchange="renderTable()">
-        <option value="all">전체 상태</option>
-        <option value="new">new</option>
-        <option value="contacted">contacted</option>
-        <option value="done">done</option>
-      </select>
+      <select id="statusFilter" onchange="renderTable()"><option value="all">전체 상태</option><option value="new">new</option><option value="contacted">contacted</option><option value="done">done</option></select>
       <button class="btn primary" onclick="loadConsultations()">새로고침</button>
       <button class="btn" onclick="downloadCSV()">CSV 다운로드</button>
     </div>
@@ -298,346 +39,124 @@
     <div class="card">
       <div class="tablebox">
         <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>접수일시</th>
-              <th>상태</th>
-              <th>이름</th>
-              <th>연락처</th>
-              <th>서비스</th>
-              <th>지역</th>
-              <th>희망일자</th>
-              <th>문의내용</th>
-              <th>관리</th>
-            </tr>
-          </thead>
-          <tbody id="tbody">
-            <tr>
-              <td colspan="10" class="empty">관리자 비밀번호를 입력하고 목록 조회를 누르세요.</td>
-            </tr>
-          </tbody>
+          <thead><tr><th>ID</th><th>접수일시</th><th>상태</th><th>이름</th><th>연락처</th><th>서비스</th><th>지역</th><th>희망일자</th><th>문의내용</th><th>관리</th></tr></thead>
+          <tbody id="tbody"><tr><td colspan="10" class="empty">관리자 비밀번호를 입력하고 목록 조회를 누르세요.</td></tr></tbody>
         </table>
       </div>
-
-      <p class="muted">
-        ※ 고객 개인정보는 상담 목적에 필요한 범위에서만 확인하고, 불필요한 외부 공유를 피하세요.
-      </p>
+      <p class="muted">※ 고객 개인정보는 상담 목적에 필요한 범위에서만 확인하고, 불필요한 외부 공유를 피하세요.</p>
     </div>
   </div>
 
   <script>
     let consultations = [];
+    const STATUS_LABEL = { new: '신규', contacted: '연락완료', done: '처리완료' };
 
-    const STATUS_LABEL = {
-      new: '신규',
-      contacted: '연락완료',
-      done: '처리완료'
-    };
-
-    function getToken() {
+    function getToken(){
       const inputValue = document.getElementById('token').value.trim();
       const savedValue = localStorage.getItem('cleanMasterAdminToken') || '';
       return inputValue || savedValue;
     }
 
-    function saveTokenAndLoad() {
+    function saveTokenAndLoad(){
       const value = document.getElementById('token').value.trim();
-
-      if (!value) {
-        alert('관리자 비밀번호를 입력해 주세요.');
-        return;
-      }
-
+      if(!value){ alert('관리자 비밀번호를 입력해 주세요.'); return; }
       localStorage.setItem('cleanMasterAdminToken', value);
       loadConsultations();
     }
 
-    function clearSavedToken() {
+    function clearSavedToken(){
       localStorage.removeItem('cleanMasterAdminToken');
       localStorage.removeItem('cm_admin_token');
-      document.getElementById('token').value = '';
-      consultations = [];
+      document.getElementById('token').value='';
+      consultations=[];
       renderTable();
       showError('');
       alert('관리자 비밀번호 저장값을 삭제했습니다.');
     }
 
-    function escapeHTML(value) {
-      return String(value ?? '')
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#039;');
-    }
+    function escapeHTML(value){return String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}
+    function showError(message){const box=document.getElementById('errorBox'); if(!message){box.style.display='none';box.innerText='';return;} box.style.display='block';box.innerText=message;}
+    function formatDate(value){if(!value)return'-'; const date=new Date(value); if(Number.isNaN(date.getTime()))return value; return date.toLocaleString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});}
 
-    function showError(message) {
-      const box = document.getElementById('errorBox');
+    async function callAdminApi(action, payload = {}){
+      const adminToken = getToken();
+      if(!adminToken) throw new Error('관리자 비밀번호를 입력해 주세요.');
 
-      if (!message) {
-        box.style.display = 'none';
-        box.innerText = '';
-        return;
-      }
-
-      box.style.display = 'block';
-      box.innerText = message;
-    }
-
-    function formatDate(value) {
-      if (!value) return '-';
-
-      const date = new Date(value);
-
-      if (Number.isNaN(date.getTime())) {
-        return value;
-      }
-
-      return date.toLocaleString('ko-KR', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    }
-
-    async function callAdminApi(method, body) {
-      const token = getToken();
-
-      if (!token) {
-        throw new Error('관리자 비밀번호를 입력해 주세요.');
-      }
-
-      const response = await fetch('/api/admin', {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-          'x-admin-token': encodeURIComponent(token)
-        },
-        body: body ? JSON.stringify(body) : undefined
+      const response = await fetch('/api/admin',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action, adminToken, ...payload })
       });
 
       let data = null;
-
-      try {
-        data = await response.json();
-      } catch (error) {
-        throw new Error('서버 응답을 해석하지 못했습니다.');
-      }
-
-      if (!response.ok || !data.ok) {
-        throw new Error(
-          (data.message || '관리자 API 오류') +
-          (data.detail ? '\n\n상세 오류:\n' + data.detail : '')
-        );
-      }
-
+      try { data = await response.json(); } catch { throw new Error('서버 응답을 해석하지 못했습니다.'); }
+      if(!response.ok || !data.ok){ throw new Error((data.message || '관리자 API 오류') + (data.detail ? '\n\n상세 오류:\n' + data.detail : '')); }
       return data;
     }
 
-    async function loadConsultations() {
+    async function loadConsultations(){
       showError('');
-
-      document.getElementById('tbody').innerHTML =
-        '<tr><td colspan="10" class="empty">상담 목록을 불러오는 중입니다.</td></tr>';
-
-      try {
-        const data = await callAdminApi('GET');
-        consultations = Array.isArray(data.rows) ? data.rows : [];
-        renderTable();
-      } catch (error) {
-        consultations = [];
-        renderTable();
-        showError(error.message);
-      }
+      document.getElementById('tbody').innerHTML='<tr><td colspan="10" class="empty">상담 목록을 불러오는 중입니다.</td></tr>';
+      try { const data = await callAdminApi('list'); consultations = Array.isArray(data.rows) ? data.rows : []; renderTable(); }
+      catch(error){ consultations=[]; renderTable(); showError(error.message); }
     }
 
-    function updateCounts() {
-      const total = consultations.length;
-      const newCount = consultations.filter(row => (row.status || 'new') === 'new').length;
-      const contactedCount = consultations.filter(row => row.status === 'contacted').length;
-      const doneCount = consultations.filter(row => row.status === 'done').length;
-
-      document.getElementById('totalCount').innerText = total;
-      document.getElementById('newCount').innerText = newCount;
-      document.getElementById('contactedCount').innerText = contactedCount;
-      document.getElementById('doneCount').innerText = doneCount;
+    function updateCounts(){
+      document.getElementById('totalCount').innerText=consultations.length;
+      document.getElementById('newCount').innerText=consultations.filter(row=>(row.status||'new')==='new').length;
+      document.getElementById('contactedCount').innerText=consultations.filter(row=>row.status==='contacted').length;
+      document.getElementById('doneCount').innerText=consultations.filter(row=>row.status==='done').length;
     }
 
-    function getFilteredRows() {
-      const keyword = document.getElementById('keyword').value.trim().toLowerCase();
-      const statusFilter = document.getElementById('statusFilter').value;
-
-      return consultations.filter(row => {
-        const status = row.status || 'new';
-
-        if (statusFilter !== 'all' && status !== statusFilter) {
-          return false;
-        }
-
-        if (!keyword) {
-          return true;
-        }
-
-        const target = [
-          row.id,
-          row.name,
-          row.phone,
-          row.address,
-          row.service_type,
-          row.message,
-          row.preferred_date,
-          row.status
-        ].join(' ').toLowerCase();
-
+    function getFilteredRows(){
+      const keyword=document.getElementById('keyword').value.trim().toLowerCase();
+      const statusFilter=document.getElementById('statusFilter').value;
+      return consultations.filter(row=>{
+        const status=row.status||'new';
+        if(statusFilter!=='all' && status!==statusFilter) return false;
+        if(!keyword) return true;
+        const target=[row.id,row.name,row.phone,row.address,row.service_type,row.message,row.preferred_date,row.status].join(' ').toLowerCase();
         return target.includes(keyword);
       });
     }
 
-    function renderTable() {
+    function renderTable(){
       updateCounts();
-
-      const rows = getFilteredRows();
-      const tbody = document.getElementById('tbody');
-
-      if (!rows.length) {
-        tbody.innerHTML = '<tr><td colspan="10" class="empty">표시할 상담 요청이 없습니다.</td></tr>';
-        return;
-      }
-
-      tbody.innerHTML = rows.map(row => {
-        const status = row.status || 'new';
-
-        return `
-          <tr>
-            <td>${escapeHTML(row.id)}</td>
-            <td>${escapeHTML(formatDate(row.created_at))}</td>
-            <td><span class="badge ${escapeHTML(status)}">${escapeHTML(STATUS_LABEL[status] || status)}</span></td>
-            <td>${escapeHTML(row.name || '-')}</td>
-            <td>${escapeHTML(row.phone || '-')}</td>
-            <td>${escapeHTML(row.service_type || '-')}</td>
-            <td>${escapeHTML(row.address || '-')}</td>
-            <td>${escapeHTML(row.preferred_date || '-')}</td>
-            <td class="message">${escapeHTML(row.message || '-')}</td>
-            <td>
-              <select onchange="changeStatus('${escapeHTML(row.id)}', this.value)">
-                <option value="new" ${status === 'new' ? 'selected' : ''}>new</option>
-                <option value="contacted" ${status === 'contacted' ? 'selected' : ''}>contacted</option>
-                <option value="done" ${status === 'done' ? 'selected' : ''}>done</option>
-              </select>
-              <div style="height:8px"></div>
-              <button class="btn small" onclick="copyConsultation('${escapeHTML(row.id)}')">상담내용 복사</button>
-            </td>
-          </tr>
-        `;
-      }).join('');
+      const rows=getFilteredRows();
+      const tbody=document.getElementById('tbody');
+      if(!rows.length){tbody.innerHTML='<tr><td colspan="10" class="empty">표시할 상담 요청이 없습니다.</td></tr>';return;}
+      tbody.innerHTML=rows.map(row=>{const status=row.status||'new'; return `<tr><td>${escapeHTML(row.id)}</td><td>${escapeHTML(formatDate(row.created_at))}</td><td><span class="badge ${escapeHTML(status)}">${escapeHTML(STATUS_LABEL[status]||status)}</span></td><td>${escapeHTML(row.name||'-')}</td><td>${escapeHTML(row.phone||'-')}</td><td>${escapeHTML(row.service_type||'-')}</td><td>${escapeHTML(row.address||'-')}</td><td>${escapeHTML(row.preferred_date||'-')}</td><td class="message">${escapeHTML(row.message||'-')}</td><td><select onchange="changeStatus('${escapeHTML(row.id)}', this.value)"><option value="new" ${status==='new'?'selected':''}>new</option><option value="contacted" ${status==='contacted'?'selected':''}>contacted</option><option value="done" ${status==='done'?'selected':''}>done</option></select><div style="height:8px"></div><button class="btn small" onclick="copyConsultation('${escapeHTML(row.id)}')">상담내용 복사</button></td></tr>`}).join('');
     }
 
-    function findRow(id) {
-      return consultations.find(row => String(row.id) === String(id));
-    }
+    function findRow(id){return consultations.find(row=>String(row.id)===String(id));}
 
-    async function changeStatus(id, status) {
+    async function changeStatus(id,status){
       showError('');
-
-      try {
-        await callAdminApi('PATCH', { id, status });
-
-        const row = findRow(id);
-        if (row) {
-          row.status = status;
-        }
-
-        renderTable();
-      } catch (error) {
-        showError(error.message);
-        await loadConsultations();
-      }
+      try{ await callAdminApi('status',{id,status}); const row=findRow(id); if(row) row.status=status; renderTable(); }
+      catch(error){ showError(error.message); await loadConsultations(); }
     }
 
-    async function copyConsultation(id) {
-      const row = findRow(id);
-
-      if (!row) {
-        return;
-      }
-
-      const text =
-`[Clean Master 상담 요청]
-ID: ${row.id}
-접수일시: ${formatDate(row.created_at)}
-상태: ${row.status || 'new'}
-이름: ${row.name || '-'}
-연락처: ${row.phone || '-'}
-서비스: ${row.service_type || '-'}
-지역: ${row.address || '-'}
-희망일자: ${row.preferred_date || '-'}
-문의내용: ${row.message || '-'}`;
-
-      try {
-        await navigator.clipboard.writeText(text);
-        alert('상담 내용이 복사되었습니다.');
-      } catch (error) {
-        alert(text);
-      }
+    async function copyConsultation(id){
+      const row=findRow(id); if(!row)return;
+      const text=`[Clean Master 상담 요청]\nID: ${row.id}\n접수일시: ${formatDate(row.created_at)}\n상태: ${row.status||'new'}\n이름: ${row.name||'-'}\n연락처: ${row.phone||'-'}\n서비스: ${row.service_type||'-'}\n지역: ${row.address||'-'}\n희망일자: ${row.preferred_date||'-'}\n문의내용: ${row.message||'-'}`;
+      try{ await navigator.clipboard.writeText(text); alert('상담 내용이 복사되었습니다.'); } catch { alert(text); }
     }
 
-    function csvEscape(value) {
-      const text = String(value ?? '');
-      return '"' + text.replaceAll('"', '""') + '"';
+    function csvEscape(value){const text=String(value??''); return '"'+text.replaceAll('"','""')+'"';}
+
+    function downloadCSV(){
+      const rows=getFilteredRows();
+      const header=['id','created_at','status','name','phone','service_type','address','preferred_date','message'];
+      const lines=[header.join(',')];
+      rows.forEach(row=>{lines.push([row.id,row.created_at,row.status||'new',row.name||'',row.phone||'',row.service_type||'',row.address||'',row.preferred_date||'',row.message||''].map(csvEscape).join(','));});
+      const blob=new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8;'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      const today=new Date().toISOString().slice(0,10);
+      a.href=url; a.download='clean-master-consultations-'+today+'.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
     }
 
-    function downloadCSV() {
-      const rows = getFilteredRows();
-
-      const header = [
-        'id',
-        'created_at',
-        'status',
-        'name',
-        'phone',
-        'service_type',
-        'address',
-        'preferred_date',
-        'message'
-      ];
-
-      const lines = [header.join(',')];
-
-      rows.forEach(row => {
-        lines.push([
-          row.id,
-          row.created_at,
-          row.status || 'new',
-          row.name || '',
-          row.phone || '',
-          row.service_type || '',
-          row.address || '',
-          row.preferred_date || '',
-          row.message || ''
-        ].map(csvEscape).join(','));
-      });
-
-      const blob = new Blob(['\ufeff' + lines.join('\n')], {
-        type: 'text/csv;charset=utf-8;'
-      });
-
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      const today = new Date().toISOString().slice(0, 10);
-
-      a.href = url;
-      a.download = 'clean-master-consultations-' + today + '.csv';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-      URL.revokeObjectURL(url);
-    }
-
-    document.getElementById('token').value = localStorage.getItem('cleanMasterAdminToken') || '';
+    document.getElementById('token').value=localStorage.getItem('cleanMasterAdminToken')||'';
   </script>
 </body>
 </html>
