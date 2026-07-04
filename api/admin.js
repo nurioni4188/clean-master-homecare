@@ -10,26 +10,28 @@ function requireEnv(name) {
   return value;
 }
 
+function getBody(req) {
+  return req.body || {};
+}
+
 function checkToken(req) {
   const saved = process.env.ADMIN_TOKEN;
-  const raw = req.headers["x-admin-token"];
-  let given = raw;
-
-  try {
-    given = decodeURIComponent(String(raw || ""));
-  } catch {
-    given = raw;
-  }
-
+  const body = getBody(req);
+  const given = body.adminToken;
   return Boolean(saved && given && saved === given);
 }
 
 export default async function handler(req, res) {
   try {
-    if (!checkToken(req)) {
-      return reply(res, 401, { ok: false, message: "관리자 비밀번호가 필요합니다." });
+    if (req.method !== "POST") {
+      return reply(res, 405, { ok: false, message: "POST만 지원합니다." });
     }
 
+    if (!checkToken(req)) {
+      return reply(res, 401, { ok: false, message: "관리자 비밀번호가 올바르지 않습니다." });
+    }
+
+    const { action, id, status } = getBody(req);
     const url = requireEnv("SUPABASE_URL");
     const serviceKey = requireEnv("SUPABASE_SERVICE_ROLE_KEY");
 
@@ -39,15 +41,14 @@ export default async function handler(req, res) {
       "Content-Type": "application/json",
     };
 
-    if (req.method === "GET") {
+    if (action === "list") {
       const r = await fetch(`${url}/rest/v1/consultations?select=*&order=created_at.desc&limit=300`, { headers });
       const text = await r.text();
       if (!r.ok) return reply(res, 500, { ok: false, message: "상담 목록 조회 실패", detail: text });
       return reply(res, 200, { ok: true, rows: JSON.parse(text || "[]") });
     }
 
-    if (req.method === "PATCH") {
-      const { id, status } = req.body || {};
+    if (action === "status") {
       if (!id || !STATUS_SET.has(status)) {
         return reply(res, 400, { ok: false, message: "id와 상태값이 필요합니다." });
       }
@@ -63,7 +64,7 @@ export default async function handler(req, res) {
       return reply(res, 200, { ok: true, updated: JSON.parse(text || "[]") });
     }
 
-    return reply(res, 405, { ok: false, message: "GET 또는 PATCH만 지원합니다." });
+    return reply(res, 400, { ok: false, message: "action 값이 필요합니다." });
   } catch (error) {
     return reply(res, 500, { ok: false, message: "관리자 API 오류", detail: error.message });
   }
