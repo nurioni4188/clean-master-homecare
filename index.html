@@ -1,1 +1,528 @@
 
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clean Master 스마트 홈케어</title>
+  <meta name="description" content="서울·경기 홈케어 청소 예약 상담. 문의 정리 도우미로 청소 범위와 상담 내용을 정리하고 전화·문자로 연결합니다." />
+  <style>
+    :root {
+      --navy: #0b1f33;
+      --blue: #0066cc;
+      --bg: #f5f5f7;
+      --line: #e5e7eb;
+      --text: #111827;
+      --muted: #555;
+      --warn: #fff7ed;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, "Noto Sans KR", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topin {
+      max-width: 1120px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand {
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .hero,
+    section {
+      max-width: 1120px;
+      margin: auto;
+      padding: 42px 20px;
+    }
+
+    .hero {
+      padding-top: 78px;
+    }
+
+    .badge {
+      display: inline-flex;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.02;
+      letter-spacing: -0.07em;
+      color: var(--navy);
+      margin: 20px 0 16px;
+    }
+
+    .lead {
+      font-size: 20px;
+      line-height: 1.75;
+      color: #334155;
+      max-width: 860px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 12px 16px;
+      font-weight: 900;
+      color: #334155;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 45px rgba(15,23,42,.07);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+    }
+
+    .card p,
+    .card li {
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 32px;
+      letter-spacing: -0.05em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .notice {
+      border: 1px solid #fed7aa;
+      background: var(--warn);
+      color: #9a3412;
+      border-radius: 22px;
+      padding: 18px;
+      line-height: 1.7;
+      font-weight: 800;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 900;
+      color: #0b1f33;
+    }
+
+    .helper {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 45px rgba(15,23,42,.07);
+    }
+
+    label {
+      font-weight: 900;
+      color: var(--navy);
+      display: block;
+      margin: 14px 0 6px;
+    }
+
+    select,
+    textarea,
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      font: inherit;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .result {
+      margin-top: 16px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      border-radius: 20px;
+      padding: 18px;
+      line-height: 1.7;
+      color: #1e3a8a;
+      white-space: pre-wrap;
+    }
+
+    .footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 34px 20px;
+      margin-top: 40px;
+    }
+
+    .footin {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer b {
+      color: #fff;
+    }
+
+    @media(max-width: 860px) {
+      .two,
+      .three {
+        grid-template-columns: 1fr;
+      }
+
+      .topin {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-title {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="topin">
+      <div class="brand">Clean Master 스마트 홈케어</div>
+      <nav class="nav">
+        <a href="#service">서비스</a>
+        <a href="#price">요금</a>
+        <a href="#helper">문의 정리</a>
+        <a href="admin.html">관리자</a>
+        <a href="privacy.html">개인정보</a>
+        <a href="terms.html">약관</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="badge">서울·경기 홈케어 예약 상담</span>
+      <h1>청소 문의를 정리하고 상담 예약으로 연결합니다.</h1>
+      <p class="lead">
+        Clean Master는 입주청소, 거주청소, 이사청소, 정기 홈케어 문의를 상담 전 깔끔하게 정리해
+        전화·문자 상담으로 연결하는 예약형 웹페이지입니다.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="tel:15880000">전화 상담 1588-0000</a>
+        <a class="btn" href="sms:15880000">문자 문의</a>
+        <a class="btn" href="#helper">문의 정리 도우미</a>
+      </div>
+      <div class="notice" style="margin-top:26px">
+        상담 전 문의 내용을 정리하면 청소 범위, 희망 일정, 추가 확인사항을 더 빠르게 안내받을 수 있습니다.
+        최종 금액과 일정은 상담 후 확정됩니다.
+      </div>
+    </section>
+
+    <section id="service">
+      <div class="section-title">
+        <h2>서비스</h2>
+        <p>상담 전 필요한 정보를 쉽게 정리합니다.</p>
+      </div>
+
+      <div class="grid three">
+        <div class="card">
+          <h3>입주·이사청소</h3>
+          <p>이사 전후 공간의 먼지, 창틀, 주방, 욕실 등 기본 청소 범위를 상담합니다.</p>
+        </div>
+        <div class="card">
+          <h3>거주청소</h3>
+          <p>거주 중인 집의 생활 오염, 주방·욕실, 부분 청소 필요사항을 정리합니다.</p>
+        </div>
+        <div class="card">
+          <h3>정기 홈케어</h3>
+          <p>정기 방문이 필요한 고객의 희망 주기와 공간 상태를 상담합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="price">
+      <div class="section-title">
+        <h2>예상 상담 범위</h2>
+        <p>최종 금액은 현장·범위 확인 후 확정됩니다.</p>
+      </div>
+
+      <div class="grid three">
+        <div class="card">
+          <h3>원룸·소형</h3>
+          <p class="price">70,000원~150,000원</p>
+          <p>면적과 오염도에 따라 달라질 수 있습니다.</p>
+        </div>
+        <div class="card">
+          <h3>아파트·빌라</h3>
+          <p class="price">100,000원~200,000원</p>
+          <p>방·화장실 수와 옵션에 따라 달라질 수 있습니다.</p>
+        </div>
+        <div class="card">
+          <h3>정기 관리</h3>
+          <p class="price">상담 후 안내</p>
+          <p>방문 주기와 관리 범위에 따라 안내합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="helper">
+      <div class="section-title">
+        <h2>문의 정리 도우미</h2>
+        <p>자동 견적이 아니라 상담 전 정보 정리용입니다.</p>
+      </div>
+
+      <div class="helper">
+        <label>서비스 유형</label>
+        <select id="type">
+          <option>입주청소</option>
+          <option>이사청소</option>
+          <option>거주청소</option>
+          <option>정기 홈케어</option>
+          <option>부분청소</option>
+        </select>
+
+        <label>지역</label>
+        <input id="area" placeholder="예: 서울 용산구" />
+
+        <label>문의 내용</label>
+        <textarea id="memo" placeholder="평수, 희망일, 오염 정도, 요청사항을 개인정보 없이 적어주세요."></textarea>
+
+        <div class="actions">
+          <button class="btn primary" type="button" onclick="makeResult()">상담 내용 정리</button>
+          <button class="btn" type="button" onclick="copyResult()">결과 복사</button>
+          <button class="btn primary" type="button" onclick="submitLead()">상담 요청 접수</button>
+        </div>
+
+        <div id="result" class="result">서비스 유형과 문의 내용을 입력하면 상담용 요약이 표시됩니다.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>예약 전 확인사항</h2>
+        <p>상담 시 함께 확인하면 좋습니다.</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>고객 확인</h3>
+          <ul>
+            <li>희망 날짜와 시간대</li>
+            <li>청소 공간 면적과 구조</li>
+            <li>엘리베이터·주차 가능 여부</li>
+            <li>특별 요청 공간</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>운영자 확인</h3>
+          <ul>
+            <li>서비스 가능 지역</li>
+            <li>예상 작업 시간</li>
+            <li>추가 비용 발생 가능성</li>
+            <li>방문 전 준비사항</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footin">
+      <div>
+        <b>Clean Master 스마트 홈케어</b><br />
+        서울·경기 홈케어 예약 상담
+      </div>
+      <div>
+        상호명: 클린마스터 홈케어<br />
+        대표자: 누리오니<br />
+        사업자등록번호: 406-71-*****<br />
+        전화: <a href="tel:15880000">1588-0000</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function makeResult() {
+      const t = document.getElementById('type').value;
+      const a = document.getElementById('area').value || '지역 미입력';
+      const m = document.getElementById('memo').value || '문의 내용 미입력';
+
+      const text =
+`[Clean Master 상담 요약]
+서비스 유형: ${t}
+지역: ${a}
+문의 내용: ${m}
+
+확인 필요사항:
+- 희망 날짜와 시간대
+- 공간 면적과 구조
+- 오염 정도와 특별 요청사항
+- 주차/엘리베이터 가능 여부
+
+※ 본 내용은 자동 견적이 아니라 상담 전 정보 정리용입니다.`;
+
+      document.getElementById('result').innerText = text;
+    }
+
+    async function copyResult() {
+      const text = document.getElementById('result').innerText;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('복사 완료');
+      } catch (e) {
+        alert('복사가 지원되지 않는 환경입니다.');
+      }
+    }
+
+    async function submitLead() {
+      const type = document.getElementById('type').value;
+      const area = document.getElementById('area').value.trim();
+      const memo = document.getElementById('memo').value.trim();
+
+      if (!area || !memo) {
+        alert('지역과 문의 내용을 입력해 주세요.');
+        return;
+      }
+
+      makeResult();
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            type,
+            area,
+            memo
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.ok) {
+          alert('상담 요청이 서버에 접수되었습니다. 빠르게 연락드리겠습니다.');
+        } else {
+          alert(
+            (data.message || '접수에 실패했습니다.') +
+            (data.detail ? '\n\n상세 오류:\n' + data.detail : '')
+          );
+        }
+      } catch (e) {
+        alert(
+          '서버 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.' +
+          '\n\n' + e.message
+        );
+      }
+    }
+  </script>
+</body>
+</html>
