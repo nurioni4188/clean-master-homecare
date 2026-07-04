@@ -29,6 +29,44 @@
 function makeResult(){const t=document.getElementById('type').value;const a=document.getElementById('area').value||'지역 미입력';const m=document.getElementById('memo').value||'문의 내용 미입력';const text=`[Clean Master 상담 요약]\n서비스 유형: ${t}\n지역: ${a}\n문의 내용: ${m}\n\n확인 필요사항:\n- 희망 날짜와 시간대\n- 공간 면적과 구조\n- 오염 정도와 특별 요청사항\n- 주차/엘리베이터 가능 여부\n\n※ 본 내용은 자동 견적이 아니라 상담 전 정보 정리용입니다.`;document.getElementById('result').innerText=text}
 async function copyResult(){const text=document.getElementById('result').innerText;try{await navigator.clipboard.writeText(text);alert('복사 완료')}catch(e){alert('복사가 지원되지 않는 환경입니다.')}}
 async function submitLead(){const type=document.getElementById('type').value;const area=document.getElementById('area').value.trim();const memo=document.getElementById('memo').value.trim();if(!area||!memo){alert('지역과 문의 내용을 입력해 주세요.');return}makeResult();try{const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type,area,memo})});const data=await res.json();if(data.ok){alert('상담 요청이 서버에 접수되었습니다. 빠르게 연락드리겠습니다.')}else{alert(data.message||'접수에 실패했습니다.')}}catch(e){alert('서버 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.')}}
-</script>
+</script>async function submitLead(){
+  const type = document.getElementById('type').value;
+  const area = document.getElementById('area').value.trim();
+  const memo = document.getElementById('memo').value.trim();
+
+  if(!area || !memo){
+    alert('지역과 문의 내용을 입력해 주세요.');
+    return;
+  }
+
+  makeResult();
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        type,
+        area,
+        memo
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.ok) {
+      alert('상담 요청이 서버에 접수되었습니다. 빠르게 연락드리겠습니다.');
+    } else {
+      alert(
+        (data.message || '접수에 실패했습니다.') +
+        (data.detail ? '\n\n상세 오류:\n' + data.detail : '')
+      );
+    }
+  } catch (e) {
+    alert('서버 연결 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.\n\n' + e.message);
+  }
+}
 </body>
 </html>
