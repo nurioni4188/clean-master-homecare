@@ -1,114 +1,62 @@
-const ALLOWED_STATUS = new Set(["new", "contacted", "done"]);
+const STATUS_SET = new Set(["new", "contacted", "done"]);
 
-function getSupabaseConfig() {
-  const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
-
-  if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error("Supabase 환경변수가 설정되지 않았습니다.");
-  }
-
-  return { supabaseUrl, supabaseAnonKey };
+function reply(res, code, body) {
+  return res.status(code).json(body);
 }
 
-function json(res, statusCode, payload) {
-  return res.status(statusCode).json(payload);
+function requireEnv(name) {
+  const value = process.env[name];
+  if (!value) throw new Error(`${name} 환경변수가 없습니다.`);
+  return value;
+}
+
+function checkToken(req) {
+  const saved = process.env.ADMIN_TOKEN;
+  const given = req.headers["x-admin-token"];
+  return Boolean(saved && given && saved === given);
 }
 
 export default async function handler(req, res) {
   try {
-    const { supabaseUrl, supabaseAnonKey } = getSupabaseConfig();
+    if (!checkToken(req)) {
+      return reply(res, 401, { ok: false, message: "관리자 비밀번호가 필요합니다." });
+    }
+
+    const url = requireEnv("SUPABASE_URL");
+    const serviceKey = requireEnv("SUPABASE_SERVICE_ROLE_KEY");
+
+    const headers = {
+      apikey: serviceKey,
+      Authorization: `Bearer ${serviceKey}`,
+      "Content-Type": "application/json",
+    };
 
     if (req.method === "GET") {
-      const url = `${supabaseUrl}/rest/v1/consultations?select=*&order=created_at.desc&limit=200`;
-
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          apikey: supabaseAnonKey,
-          Authorization: `Bearer ${supabaseAnonKey}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      const text = await response.text();
-
-      if (!response.ok) {
-        return json(res, 500, {
-          ok: false,
-          message: "상담 목록 조회 중 오류가 발생했습니다.",
-          detail: text,
-        });
-      }
-
-      let rows = [];
-      try {
-        rows = JSON.parse(text);
-      } catch {
-        rows = [];
-      }
-
-      return json(res, 200, {
-        ok: true,
-        rows,
-      });
+      const r = await fetch(`${url}/rest/v1/consultations?select=*&order=created_at.desc&limit=300`, { headers });
+      const text = await r.text();
+      if (!r.ok) return reply(res, 500, { ok: false, message: "상담 목록 조회 실패", detail: text });
+      return reply(res, 200, { ok: true, rows: JSON.parse(text || "[]") });
     }
 
     if (req.method === "PATCH") {
       const { id, status } = req.body || {};
-
-      if (!id || !ALLOWED_STATUS.has(status)) {
-        return json(res, 400, {
-          ok: false,
-          message: "id와 상태값(new/contacted/done)이 필요합니다.",
-        });
+      if (!id || !STATUS_SET.has(status)) {
+        return reply(res, 400, { ok: false, message: "id와 상태값이 필요합니다." });
       }
 
-      const url = `${supabaseUrl}/rest/v1/consultations?id=eq.${encodeURIComponent(id)}`;
-
-      const response = await fetch(url, {
+      const r = await fetch(`${url}/rest/v1/consultations?id=eq.${encodeURIComponent(id)}`, {
         method: "PATCH",
-        headers: {
-          apikey: supabaseAnonKey,
-          Authorization: `Bearer ${supabaseAnonKey}`,
-          "Content-Type": "application/json",
-          Prefer: "return=representation",
-        },
+        headers: { ...headers, Prefer: "return=representation" },
         body: JSON.stringify({ status }),
       });
 
-      const text = await response.text();
-
-      if (!response.ok) {
-        return json(res, 500, {
-          ok: false,
-          message: "상태 변경 중 오류가 발생했습니다.",
-          detail: text,
-        });
-      }
-
-      let updated = null;
-      try {
-        updated = JSON.parse(text);
-      } catch {
-        updated = text;
-      }
-
-      return json(res, 200, {
-        ok: true,
-        updated,
-      });
+      const text = await r.text();
+      if (!r.ok) return reply(res, 500, { ok: false, message: "상태 변경 실패", detail: text });
+      return reply(res, 200, { ok: true, updated: JSON.parse(text || "[]") });
     }
 
-    return json(res, 405, {
-      ok: false,
-      message: "GET 또는 PATCH만 지원합니다.",
-    });
+    return reply(res, 405, { ok: false, message: "GET 또는 PATCH만 지원합니다." });
   } catch (error) {
-    return json(res, 500, {
-      ok: false,
-      message: "관리자 API 처리 중 서버 오류가 발생했습니다.",
-      detail: error.message,
-    });
+    return reply(res, 500, { ok: false, message: "관리자 API 오류", detail: error.message });
   }
 }
