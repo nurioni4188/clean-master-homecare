@@ -12,7 +12,15 @@ function requireEnv(name) {
 
 function checkToken(req) {
   const saved = process.env.ADMIN_TOKEN;
-  const given = req.headers["x-admin-token"];
+  const raw = req.headers["x-admin-token"];
+  let given = raw;
+
+  try {
+    given = decodeURIComponent(String(raw || ""));
+  } catch {
+    given = raw;
+  }
+
   return Boolean(saved && given && saved === given);
 }
 
