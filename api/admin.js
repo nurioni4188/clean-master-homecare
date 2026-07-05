@@ -39,16 +39,14 @@ export default async function handler(req, res) {
         message: "POST만 지원합니다.",
       });
     }
-
+    
     if (!checkToken(req)) {
       return reply(res, 401, {
         ok: false,
         message: "관리자 비밀번호가 올바르지 않습니다.",
       });
     }
-
     const { action, id, status } = getBody(req);
-
     const url = requireEnv("SUPABASE_URL");
     const serviceKey = requireEnv("SUPABASE_SERVICE_ROLE_KEY");
 if (action === "diagnose") {
