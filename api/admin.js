@@ -49,21 +49,7 @@ export default async function handler(req, res) {
     const { action, id, status } = getBody(req);
     const url = requireEnv("SUPABASE_URL");
     const serviceKey = requireEnv("SUPABASE_SERVICE_ROLE_KEY");
-if (action === "diagnose") {
-      const vars = ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "SUPABASE_ANON_KEY", "ADMIN_TOKEN"];
-      const result = {};
-      vars.forEach((name) => {
-        const raw = process.env[name] || "";
-        const bad = [];
-        for (let i = 0; i < raw.length; i++) {
-          const code = raw.charCodeAt(i);
-          if (code > 255) bad.push({ position: i, code });
-        }
-        result[name] = { length: raw.length, badCharCount: bad.length, badChars: bad };
-      });
-      return reply(res, 200, { ok: true, diagnose: result });
-    }
-      const headers = {
+    const headers = {
       apikey: serviceKey,
       Authorization: `Bearer ${serviceKey}`,
       "Content-Type": "application/json",
