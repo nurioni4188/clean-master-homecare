@@ -81,3 +81,14 @@ test('cinematic hero includes actual video with mobile/static fallback and contr
  assert.match(html,/더 여유로운 일상/);
  assert.match(html,/class="hero-credit"/);
 });
+
+test('cinematic hero is daylight ivory, readable, and keeps all media controls',()=>{
+ assert.match(html,/HERO_V2: brighter premium homecare video/);
+ assert.match(html,/background:#f2f4ef/);
+ assert.match(html,/background:rgba\(255,255,255,\.86\)/);
+ assert.match(html,/\.cinematic-hero h1\{color:#17354a/);
+ assert.match(html,/\.hero-shade\{z-index:-1;background:linear-gradient\(90deg,rgba\(252,251,246,\.62\)/);
+ assert.doesNotMatch(html,/rgba\(8,29,43,\.81\)/);
+ assert.match(html,/id="hero-pause"/);
+ assert.match(html,/connect-src &#39;none&#39;/);
+});
