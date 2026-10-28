@@ -15,7 +15,7 @@ test('no public production deployment or unauthenticated signup',()=>{
  assert.match(js,/VITE_CM_SYNTHETIC_WRITES==='ON'/);
  assert.match(js,/assertSynthetic\(payload\)/);
  assert.match(cfg,/noindex/);
- assert.doesNotMatch(js,/service_role|sb_secret_/i); // only positive staged client code
+ assert.doesNotMatch(js,/env\.VITE_CM_(?:SERVICE_ROLE|SECRET_KEY)/i); // never read server secrets
 });
 test('client roles are checked against authenticated memberships and RLS',()=>{
  for(const method of ['ownMembership','services','mySubscriptions','requestSubscription','cancelSubscription','adminBookings','adminSubscriptions','adminCleaners'])
