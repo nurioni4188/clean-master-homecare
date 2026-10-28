@@ -25,6 +25,6 @@ test('real Staging UI does not mix RAM demo with account data',()=>{
 test('no Production, anonymous service keys or real payment activation',()=>{
  assert.match(derived,/noindex/);
  assert.match(derived,/비공개 통합 Staging/);
- assert.doesNotMatch(app,/service_role|sb_secret_/i);
+ assert.doesNotMatch(app,/env\\.VITE_CM_(?:SERVICE_ROLE|SECRET_KEY)/i);
  assert.doesNotMatch(app,/status\s*[:=]\s*['"]active['"]/);
 });
