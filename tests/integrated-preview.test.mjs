@@ -17,7 +17,7 @@ const make=()=>{
 const expectCode=(fn,code)=>assert.throws(fn,e=>e.code===code);
 
 test('homepage retains original services and price labels but no PII placeholders',()=>{
- for(const text of ['Clean Master','입주·이사청소','거주청소','정기 홈케어','70,000원~150,000원','100,000원~200,000원','#booking','#subscription','#admin'])assert.ok(html.includes(text),text);
+ for(const text of ['Clean Master','입주·이사청소','거주청소','정기 홈케어','70,000원~150,000원','100,000원~200,000원','id="helper"','id="booking"','id="subscription"','id="admin"','help-generate'])assert.ok(html.includes(text),text);
  for(const forbidden of [/\/api\/contact/,/\/api\/admin/,/fetch\s*\(/,/https?:\/\//,/tel:/,/sms:/,/localStorage/,/sessionStorage/,/SUPABASE_/,/test_sk_/,/live_sk_/,/1588-0000/,/010-1234/])assert.doesNotMatch(html,forbidden);
  assert.match(html,/connect-src &#39;none&#39;/);
 });
