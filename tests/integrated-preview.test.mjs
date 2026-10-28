@@ -25,7 +25,7 @@ test('homepage retains original services and price labels but no PII placeholder
  const externalUrls=html.match(/https?:\/\/[^\s"'<>]+/g)||[];
  assert.ok(externalUrls.length>=2,'Expected official licensed hero video and poster');
  for(const url of externalUrls){
-  const hostname=new URL(url.replaceAll('&amp;','&')).hostname;
+  const hostname=new URL(url.replace(/;$/,'').replaceAll('&amp;','&')).hostname;
   assert.ok(['videos.pexels.com','images.pexels.com','www.pexels.com'].includes(hostname),'Unexpected remote host: '+hostname);
  }
 
