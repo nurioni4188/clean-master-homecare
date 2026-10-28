@@ -1,0 +1,384 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;self&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src data: https://images.pexels.com; media-src https://videos.pexels.com; connect-src &#39;self&#39; https://xmctcgsaujxnduydfjpg.supabase.co wss://xmctcgsaujxnduydfjpg.supabase.co; form-action &#39;self&#39;; base-uri &#39;none&#39;"><title>Clean Master | 디자인 보존 Staging 검증</title><meta name="description" content="Clean Master 홈케어 서비스 소개와 예약·구독·운영관리 통합 시연용 Preview. 실거래나 고객정보 저장은 지원하지 않습니다."><style>
+    :root {
+      --navy: #0b1f33;
+      --blue: #0066cc;
+      --bg: #f5f5f7;
+      --line: #e5e7eb;
+      --text: #111827;
+      --muted: #555;
+      --warn: #fff7ed;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, "Noto Sans KR", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    a { color: inherit; }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topin {
+      max-width: 1120px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand { font-weight: 900; color: var(--navy); }
+
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .hero, section { max-width: 1120px; margin: auto; padding: 42px 20px; }
+    .hero { padding-top: 78px; }
+
+    .badge {
+      display: inline-flex;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.02;
+      letter-spacing: -0.07em;
+      color: var(--navy);
+      margin: 20px 0 16px;
+    }
+
+    .lead { font-size: 20px; line-height: 1.75; color: #334155; max-width: 860px; }
+
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 12px 16px;
+      font-weight: 900;
+      color: #334155;
+      cursor: pointer;
+    }
+
+    .btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+    .grid { display: grid; gap: 16px; }
+    .two { grid-template-columns: repeat(2, 1fr); }
+    .three { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
+    }
+
+    .card h3 { margin: 0 0 10px; color: var(--navy); }
+    .card p, .card li { color: #4b5563; line-height: 1.7; }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .section-title h2 { margin: 0; color: var(--navy); font-size: 32px; letter-spacing: -0.05em; }
+    .section-title p { margin: 0; color: var(--muted); }
+
+    .notice {
+      border: 1px solid #fed7aa;
+      background: var(--warn);
+      color: #9a3412;
+      border-radius: 22px;
+      padding: 18px;
+      line-height: 1.7;
+      font-weight: 800;
+    }
+
+    .price { font-size: 28px; font-weight: 900; color: #0b1f33; }
+
+    .helper {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
+    }
+
+    label { font-weight: 900; color: var(--navy); display: block; margin: 14px 0 6px; }
+
+    select, textarea, input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      font: inherit;
+      background: #fff;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+    .hint {
+      margin-top: 10px;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .result {
+      margin-top: 16px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      border-radius: 20px;
+      padding: 18px;
+      line-height: 1.7;
+      color: #1e3a8a;
+      white-space: pre-wrap;
+    }
+
+    .footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 34px 20px;
+      margin-top: 40px;
+    }
+
+    .footin {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer b { color: #fff; }
+
+    @media (max-width: 860px) {
+      .two, .three, .form-grid { grid-template-columns: 1fr; }
+      .topin { align-items: flex-start; flex-direction: column; }
+      .section-title { display: block; }
+      .hero { padding-top: 48px; }
+    }
+  
+
+/* HERO_V2: brighter premium homecare video, high-contrast ivory content panel */
+.cinematic-hero.hero{position:relative;isolation:isolate;display:flex;align-items:center;max-width:none;min-height:clamp(550px,74svh,850px);padding:0;color:#1b3445;background:#f2f4ef;overflow:hidden}
+.hero-media,.hero-shade{position:absolute;inset:0;pointer-events:none}
+.hero-media{z-index:-2;background-color:#e9efe9;background-image:url("https://images.pexels.com/videos/5744421/a-house-art-at-home-villa-5744421.jpeg?auto=compress&dpr=1&h=750&w=1260");background-position:center 52%;background-size:cover}
+.hero-video{height:100%;width:100%;display:block;object-fit:cover;object-position:center;opacity:0;transition:opacity 800ms ease}
+.hero-video.is-playing{opacity:1}
+.hero-shade{z-index:-1;background:linear-gradient(90deg,rgba(252,251,246,.62) 0%,rgba(252,251,246,.24) 50%,rgba(252,251,246,.02) 100%)}
+.cinematic-shell{max-width:1180px;margin:auto;width:100%;padding:74px 30px 103px}
+.cinematic-content{max-width:650px;padding:42px 42px 36px;background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:0 20px 65px rgba(30,64,75,.12);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.hero-kicker{font-size:12px;font-weight:900;letter-spacing:.19em;color:#27746a;margin:0 0 21px}
+.cinematic-hero h1{color:#17354a;line-height:1.12;font-size:clamp(43px,5.5vw,73px);letter-spacing:-.07em;margin:0 0 22px;text-wrap:balance;text-shadow:none}
+.cinematic-hero h1 em{font-style:normal;color:#246b68}
+.hero-copy{font-size:clamp(16px,1.75vw,20px);line-height:1.8;color:#334a56;max-width:600px}
+.cinematic-actions{margin-top:25px}
+.cinematic-actions .btn{border-radius:13px;padding:14px 21px;min-height:48px}
+.cinematic-actions .btn.primary{background:#145d63;border-color:#145d63;color:#fff}
+.cinematic-actions .btn:not(.primary){border-color:#b6c9c3;background:#fff;color:#1d4a55}
+.cinematic-actions .btn:hover{filter:brightness(.96)}
+.hero-disclaimer{font-size:12px;line-height:1.6;color:#526a6a;margin-top:22px;max-width:590px}
+.hero-control{position:absolute;right:24px;bottom:18px;display:flex;align-items:center;gap:10px;z-index:2}
+.video-toggle{border:1px solid #c7ddd6;color:#204a53;background:rgba(255,255,255,.93);border-radius:999px;padding:9px 14px;font:inherit;font-size:12px;cursor:pointer}
+.video-toggle[hidden]{display:none}
+.hero-credit{font-size:11px;color:#1c4852;text-decoration:none;background:rgba(255,255,255,.9);padding:9px;border-radius:8px}
+.hero-preview-note{max-width:1160px;margin:20px auto 0;padding:15px 22px;border-radius:16px;background:#fff6e7;border:1px solid #e7d6b8;color:#6d4d24;line-height:1.7;font-size:13px}
+@media(max-width:900px){.cinematic-hero.hero{min-height:590px}.cinematic-shell{padding:66px 22px 106px}.cinematic-content{max-width:630px;padding:34px 30px;background:rgba(255,255,255,.87)}.hero-shade{background:linear-gradient(90deg,rgba(255,255,251,.38),rgba(255,255,251,.08))}.hero-control{right:14px;bottom:12px}.hero-credit{font-size:10px}.hero-preview-note{margin:12px 16px 0}}
+@media(max-width:580px){.cinematic-hero.hero{min-height:620px}.cinematic-shell{padding:54px 18px 102px}.cinematic-content{padding:30px 22px;border-radius:23px;background:rgba(255,255,255,.91)}.cinematic-hero h1{font-size:clamp(39px,10vw,54px)}.hero-copy{font-size:16px}.cinematic-actions{gap:9px}.cinematic-actions .btn{width:100%;justify-content:center}.hero-control{left:12px;right:12px;justify-content:flex-end}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none!important;transition:none!important}}
+
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
+.logo-dot{color:#0066cc}.preview-bar{background:#eaf2ff;color:#173f80;text-align:center;font-size:13px;font-weight:800;padding:11px 18px}
+.pill{display:inline-block;background:#eff6ff;color:#1d4ed8;border:1px solid #c6dbfb;border-radius:30px;padding:5px 10px;font-size:12px;font-weight:900;margin:4px 5px 4px 0}
+.nav a:focus-visible,.btn:focus-visible,button:focus-visible{outline:3px solid #fdbe57;outline-offset:3px}
+.sublead{color:#64748b;line-height:1.65;margin:10px 0 18px}
+.demo-forms{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.demo-input{border:1px solid #d8e3f0;border-radius:20px;background:white;padding:24px}
+.demo-input h3{font-size:22px;color:#0b1f33;margin:0 0 12px}
+.demo-input label{font-size:13px;margin-top:14px}
+.demo-input input,.demo-input select{border:1px solid #cbd5e1;border-radius:11px;padding:12px}
+.demo-input input:focus,.demo-input select:focus{outline:2px solid #7baceb}
+.demo-btn{background:#0066cc;color:white;border:0;border-radius:12px;padding:13px 19px;font-weight:900;cursor:pointer;margin-top:18px}
+.demo-btn:disabled{opacity:.6;cursor:wait}
+.status{font-size:13px;line-height:1.7;color:#2c4d78;min-height:20px;margin:14px 0 0}
+.status.ok{color:#15734c}.status.warn{color:#ae4b25}
+.feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.feature-strip .tile{border:1px solid #dbe5f0;background:#fff;border-radius:18px;padding:18px}
+.feature-strip b{display:block;color:#0b1f33;font-size:28px;margin-top:6px}
+.feature-strip small{color:#65758c}
+.admin-wrap{border:1px solid #d5e0ef;background:#f0f5fc;border-radius:26px;padding:24px}
+.demo-list{display:grid;gap:8px}
+.demo-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:white;border:1px solid #dae4ef;border-radius:14px;padding:14px}
+.demo-row b{color:#132b46}.demo-row small{display:block;color:#63748c;margin-top:6px;line-height:1.45}
+.demo-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.demo-actions button{border:1px solid #b9d1ec;color:#20558b;background:#edf5ff;border-radius:10px;padding:8px 10px;font-weight:800;cursor:pointer}
+.demo-actions button:disabled{opacity:.55}
+.demo-status{font-size:12px;color:#2c5b91;background:#eaf2ff;padding:6px 9px;border-radius:20px;white-space:nowrap}
+.demo-mini{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.demo-mini .card{box-shadow:none;padding:17px}
+.guard{background:#fff8e9;border-left:4px solid #f3b654;border-radius:10px;padding:15px 16px;color:#8b4b19;line-height:1.65}
+.empty-row{color:#708197;font-size:14px;line-height:1.6}
+@media(max-width:860px){.demo-forms,.demo-mini{grid-template-columns:1fr}.feature-strip{grid-template-columns:repeat(2,1fr)}.hero{padding-top:50px}.admin-wrap{padding:12px}}
+</style></head><body>
+<div class="preview-bar">비공개 통합 Staging · 합성 TEST 계정 전용 · 실제 고객·결제 금지</div>
+<header class="top"><div class="topin"><div class="brand">Clean Master<span class="logo-dot">.</span> 스마트 홈케어</div>
+<nav class="nav" aria-label="사이트 메뉴"><a href="#service">서비스</a><a href="#price">요금 안내</a><a href="#helper">문의 정리</a><a href="#booking-section">예약 검증</a><a href="#subscription-section">정기구독 체험</a><a href="#mypage-section">내 이용내역</a><a href="#admin-section">운영관리 체험</a></nav></div></header>
+<main>
+<section class="hero cinematic-hero" aria-labelledby="hero-title">
+ <div class="hero-media" aria-hidden="true">
+  <video id="hero-video" class="hero-video" muted loop playsinline preload="none" poster="https://images.pexels.com/videos/5744421/a-house-art-at-home-villa-5744421.jpeg?auto=compress&amp;dpr=1&amp;h=750&amp;w=1260"></video>
+ </div>
+ <div class="hero-shade" aria-hidden="true"></div>
+ <div class="cinematic-shell">
+  <div class="cinematic-content">
+   <p class="hero-kicker">CLEAN MASTER <span aria-hidden="true">·</span> PREMIUM HOMECARE</p>
+   <h1 id="hero-title">깨끗한 공간,<br><em>더 여유로운 일상.</em></h1>
+   <p class="hero-copy">햇살처럼 밝고 편안한 우리 집.<br>입주·이사청소부터 월 2회·4회 정기 홈케어까지.</p>
+   <div class="actions cinematic-actions"><a class="btn primary" href="#booking">방문 청소 예약 검증</a><a class="btn" href="#subscription">정기 홈케어 살펴보기</a></div>
+   <p class="hero-disclaimer">STAGING · 사전 승인된 TEST 계정만 · 실제 결제 및 고객정보 입력 금지</p>
+  </div>
+ </div>
+ <div class="hero-control">
+  <button type="button" id="hero-pause" class="video-toggle" aria-label="배경 영상 일시정지" aria-pressed="false" hidden>영상 일시정지</button>
+  <a href="https://www.pexels.com/video/video-of-a-living-room-5744421/" target="_blank" rel="noopener noreferrer" class="hero-credit">홍보용 예시 영상 · Pexels / Abdullah | 4K</a>
+ </div>
+</section>
+<div class="hero-preview-note">이 파생 화면은 비공개 Staging 개발용입니다. <strong>실제 예약·견적·결제·고객정보 접수는 하지 않습니다.</strong> 입력 주소와 메모는 반드시 TEST로 시작해야 합니다.</div>
+<section id="service">
+      <div class="section-title">
+        <h2>서비스</h2>
+        <p>상담 전 필요한 정보를 쉽게 정리합니다.</p>
+      </div>
+
+      <div class="grid three">
+        <div class="card"><h3>입주·이사청소</h3><p>이사 전후 공간의 먼지, 창틀, 주방, 욕실 등 기본 청소 범위를 상담합니다.</p></div>
+        <div class="card"><h3>거주청소</h3><p>거주 중인 집의 생활 오염, 주방·욕실, 부분 청소 필요사항을 정리합니다.</p></div>
+        <div class="card"><h3>정기 홈케어</h3><p>정기 방문이 필요한 고객의 희망 주기와 공간 상태를 상담합니다.</p></div>
+      </div>
+    </section><section id="price">
+      <div class="section-title">
+        <h2>예상 상담 범위</h2>
+        <p>최종 금액은 현장·범위 확인 후 확정됩니다.</p>
+      </div>
+
+      <div class="grid three">
+        <div class="card"><h3>원룸·소형</h3><p class="price">70,000원~150,000원</p><p>면적과 오염도에 따라 달라질 수 있습니다.</p></div>
+        <div class="card"><h3>아파트·빌라</h3><p class="price">100,000원~200,000원</p><p>방·화장실 수와 옵션에 따라 달라질 수 있습니다.</p></div>
+        <div class="card"><h3>정기 관리</h3><p class="price">상담 후 안내</p><p>방문 주기와 관리 범위에 따라 안내합니다.</p></div>
+      </div>
+    </section>
+<section id="helper">
+ <div class="section-title"><h2>문의 정리 도우미</h2><p>기존 홈페이지 기능을 개인정보 전송 없이 유지했습니다.</p></div>
+ <div class="demo-input">
+  <div class="demo-forms">
+   <div><label for="help-service">서비스 유형</label><select id="help-service"><option>입주·이사청소</option><option>거주청소</option><option>정기 홈케어</option><option>부분청소</option></select></div>
+   <div><label for="help-region">상담 지역(광역)</label><select id="help-region"><option>서울</option><option>경기</option></select></div>
+  </div>
+  <label for="help-memo">가상 문의 메모 (실명·전화번호·주소 금지)</label>
+  <textarea id="help-memo" maxlength="300" placeholder="예: TEST 25평, 주방 및 욕실 집중 관리 희망"></textarea>
+  <button id="help-generate" type="button" class="demo-btn">상담 요약 생성</button>
+  <button id="help-copy" type="button" class="btn" style="margin-left:8px">요약 복사</button>
+  <div id="help-result" class="result" role="status" aria-live="polite">입력 내용을 이 브라우저에서만 요약합니다. 실제 상담이 접수되지 않습니다.</div>
+  <p class="hint">자동 견적·상담 접수가 아닙니다. 기존 홈페이지의 Supabase 상담 저장 API는 이번 Preview에서 호출하지 않습니다.</p>
+ </div>
+</section>
+
+<!-- RC16 isolated staging: all demo-only booking/subscription/admin sections are REMOVED from this derivative. -->
+<div class="staging-live">
+<section id="auth-section" class="auth-panel" aria-labelledby="auth-title">
+      <span class="eyebrow">01 / ACCESS</span><h2 id="auth-title">테스트 계정 로그인</h2>
+      <form id="login-form">
+        <label for="email">사전 등록된 테스트 계정 이메일</label>
+        <div class="inline-fields"><input id="email" name="email" type="email" autocomplete="email" required placeholder="등록된 테스트 이메일"><button type="submit" class="btn primary">로그인 링크 요청</button></div>
+      </form>
+      <div class="inline-fields"><button id="logout" type="button" class="btn ghost" hidden>로그아웃</button><button id="refresh" class="btn ghost" type="button" hidden>데이터 새로고침</button></div>
+      <p id="auth-message" class="message" role="status" aria-live="polite">Staging 연결 설정을 확인하고 있습니다.</p>
+    </section>
+    <section id="workspace" hidden>
+      <div class="panel-controls"><div><span class="eyebrow">02 / WORKSPACE</span><h2>통합 서비스 작업공간</h2></div><div><label for="org-select">승인된 조직</label><select id="org-select"></select><p id="role-summary" class="small"></p></div></div>
+      <section class="color-block lime" id="booking-section" aria-labelledby="booking-title">
+        <span class="eyebrow">BOOKING</span><h2 id="booking-title">방문 청소 예약</h2>
+        <p>상담·방문을 신청하면 예약 DB에 저장되고, 관리자 처리 후 마이페이지에서 상태를 확인합니다.</p>
+        <form id="booking-form" class="form-grid">
+          <div><label for="service">청소 서비스</label><select id="service" name="svc" required></select></div>
+          <div><label for="date">희망 방문일</label><input id="date" name="date" type="date" required></div>
+          <div><label for="slot">시작 시간</label><select id="slot" name="slot" required><option value="9">09:00</option><option value="11">11:00</option><option value="14">14:00</option><option value="16">16:00</option></select></div>
+          <div><label for="size">청소 면적(평)</label><input id="size" name="size" type="number" min="1" max="500" value="25" required></div>
+          <div class="wide"><label for="addr">가상 주소(TEST로 시작)</label><input id="addr" name="addr" maxlength="300" placeholder="TEST 서울 가상 주소" required></div>
+          <div class="wide"><label for="note">가상 요청사항</label><textarea id="note" name="note" maxlength="1000" placeholder="TEST 청소 요청 사항"></textarea></div>
+          <label class="check-row wide"><input name="consent" type="checkbox" required> 테스트용 데이터 처리에 동의합니다. (실제 개인정보 입력 금지)</label>
+          <button class="btn primary" type="submit">가상 예약 DB 신청</button>
+        </form>
+        <p id="booking-result" class="message" role="status" aria-live="polite"></p>
+      </section>
+      <section class="color-block lilac" id="subscription-section" aria-labelledby="sub-title">
+        <span class="eyebrow">MONTHLY CARE</span><h2 id="sub-title">정기구독 신청</h2>
+        <p>월 2회 또는 월 4회 상품을 선택합니다. 신청 후 결제대기 상태까지만 DB에 저장됩니다.</p>
+        <form id="subscription-form" class="form-grid">
+          <div class="wide"><label for="plan">확정된 Staging 상품</label><select id="plan" name="plan" required></select></div>
+          <label class="check-row wide"><input name="agreed" type="checkbox" required> 테스트용 구독 신청에 동의합니다. (실제 청구 없음)</label>
+          <button class="btn primary" type="submit">구독 신청(결제대기)</button>
+        </form>
+        <p id="subscription-result" class="message" role="status" aria-live="polite"></p>
+      </section>
+      <section class="section-white" id="mypage-section">
+        <span class="eyebrow">MY CLEAN MASTER</span><h2>나의 이용내역</h2>
+        <div class="stack"><div class="card"><h3>예약 목록</h3><div id="my-bookings" class="rows"></div></div><div class="card"><h3>정기구독 및 취소</h3><div id="my-subscriptions" class="rows"></div></div><div class="card"><h3>청구주기 · 방문권 현황</h3><div id="my-cycles" class="rows"></div><div id="my-visits" class="rows"></div></div></div>
+      </section>
+      <section class="color-block navy" id="admin-section" hidden>
+        <span class="eyebrow">OPERATIONS / ADMIN</span><h2>운영관리</h2>
+        <p>DB에서 관리자 역할을 확인한 계정만 예약 확정·청소인력 배정을 처리합니다.</p>
+        <div class="stack"><div class="card"><h3>예약·배정</h3><div id="admin-bookings" class="rows"></div></div><div class="card"><h3>구독 현황(조회 전용)</h3><div id="admin-subscriptions" class="rows"></div></div></div>
+        <p id="admin-result" class="message" role="status" aria-live="polite"></p>
+      </section>
+    </section>
+  
+</div>
+</main><footer class="footer"><div class="footin"><div><b>Clean Master 스마트 홈케어</b><div>서울·경기 홈케어 서비스 · 통합 기능 Preview</div></div><div>2번 디자인 보존 + Staging 인증·예약·구독 연동 후보<br>실제 영업·결제·고객 개인정보 수집 비활성화</div></div></footer>
+
+<script type="module" src="/src/main.js"></script>
+</body></html>

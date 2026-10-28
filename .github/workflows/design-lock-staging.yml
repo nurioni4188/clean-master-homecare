@@ -1,0 +1,29 @@
+name: Clean Master design locked Staging candidate
+on:
+  push:
+    branches:
+      - feature/integrated-v26-designlocked-staging-20261028
+  pull_request:
+    paths:
+      - "preview/integrated-v26-staging/**"
+      - "preview/integrated-v1/index.html"
+      - ".github/workflows/design-lock-staging.yml"
+permissions:
+  contents: read
+jobs:
+  static-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Syntax checks without network, keys or DB writes
+        run: |
+          node --check preview/integrated-v26-staging/src/main.js
+          node --check preview/integrated-v26-staging/src/live-api.js
+          node --check preview/integrated-v26-staging/src/marketing.js
+      - name: Exact 2번 design lock and staging separation
+        run: |
+          cd preview/integrated-v26-staging
+          node --test tests/design-lock.test.mjs

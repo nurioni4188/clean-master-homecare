@@ -1,0 +1,36 @@
+name: Clean Master v2.6 Staging isolated build smoke
+on:
+  push:
+    branches:
+      - feature/integrated-v26-designlocked-staging-20261028
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: preview/integrated-v26-staging
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Development-only dependency install (no scripts, no secrets)
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Original design lock and workflow contracts
+        run: npm test
+      - name: Compile isolated Vite Staging application
+        run: npm run build
+      - name: Static build output check
+        run: |
+          test -f dist/index.html
+          test -d dist/assets
+          if grep -R -E 'sb_secret_[A-Za-z0-9_]{20,}' dist/ --include='*.js' >/dev/null; then
+            echo 'Review potential forbidden key literals in bundle'
+            exit 1
+          fi
