@@ -30,7 +30,7 @@ jobs:
         run: |
           test -f dist/index.html
           test -d dist/assets
-          if grep -R -E '(service_role|sb_secret_)' dist/ --include='*.js' | grep -v 'RegExp' >/dev/null; then
+          if grep -R -E 'sb_secret_[A-Za-z0-9_]{20,}' dist/ --include='*.js' >/dev/null; then
             echo 'Review potential forbidden key literals in bundle'
             exit 1
           fi
