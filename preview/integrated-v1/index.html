@@ -459,6 +459,7 @@ function createOpsStore(){
 
 
 
+/* INTEGRATED_APP_START */
 /* HERO_VIDEO_CONTROLLER_V1: no third-party scripts, lazy desktop-only video */
 (() => {
  const video=document.getElementById('hero-video'),button=document.getElementById('hero-pause');
@@ -488,7 +489,7 @@ function createOpsStore(){
  video.addEventListener('play',()=>{button.textContent='영상 일시정지';button.setAttribute('aria-pressed','false')});
 })();
 
-/* INTEGRATED_APP_START */
+
 const el=id=>document.getElementById(id);
 const store=createOpsStore();
 const a=store.customerAdd({name:'TEST 고객 A',sizePy:20});
