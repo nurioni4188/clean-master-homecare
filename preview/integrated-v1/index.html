@@ -263,10 +263,171 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
 .guard{background:#fff8e9;border-left:4px solid #f3b654;border-radius:10px;padding:15px 16px;color:#8b4b19;line-height:1.65}
 .empty-row{color:#708197;font-size:14px;line-height:1.6}
 @media(max-width:860px){.demo-forms,.demo-mini{grid-template-columns:1fr}.feature-strip{grid-template-columns:repeat(2,1fr)}.hero{padding-top:50px}.admin-wrap{padding:12px}}
+
+/* CLEAN MASTER / FIGMA-INSPIRED EDITORIAL DESIGN V1 — PREVIEW ONLY
+   Monochrome chrome, pastel full-width storytelling, accessible pill controls.
+   All existing demo ids, forms, data stores, and safety gates stay unchanged. */
+:root{
+  --navy:#111111;--blue:#000000;--bg:#ffffff;--text:#111111;
+  --muted:#262626;--line:#e6e6e6;--warn:#fff9eb;
+  --cm-lime:#dceeb1;--cm-lilac:#c5b0f4;--cm-cream:#f4ecd6;
+  --cm-mint:#c8e6cd;--cm-pink:#efd4d4;--cm-coral:#f3c9b6;
+  --cm-navy:#1f1d3d;--cm-soft:#f7f7f5;
+}
+html{scroll-behavior:smooth;scroll-padding-top:104px}
+body{background:#fff;color:#111;font-family:Inter, "Pretendard Variable",Pretendard,"Noto Sans KR",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.025em;font-weight:400}
+a{color:inherit}
+:where(a,button,input,select,textarea):focus-visible{outline:3px solid #ff3d8b;outline-offset:3px}
+.preview-bar{background:#fff9eb;color:#59401b;padding:10px 18px;border-bottom:1px solid #f2e0b8;font-size:12px;letter-spacing:.01em;font-weight:650}
+.top{background:#fff;box-shadow:none;border-bottom:1px solid #e6e6e6;-webkit-backdrop-filter:none;backdrop-filter:none}
+.topin{max-width:1328px;padding:16px 26px;min-height:78px;gap:20px}
+.brand{font-size:21px;font-weight:800;color:#000;letter-spacing:-.055em;white-space:nowrap}
+.logo-dot{color:#ff3d8b}
+.nav{gap:4px;align-items:center}
+.nav a{font-size:13px;letter-spacing:-.015em;border:0;background:transparent;color:#111;font-weight:600;padding:11px 12px;border-radius:50px;white-space:nowrap;transition:background .18s}
+.nav a:hover{background:#f0f0ed}
+.nav a[href="#booking"]{background:#000;color:white;padding:12px 16px;margin-left:5px}
+.nav a[href="#booking"]:hover{background:#292929}
+.menu-toggle{display:none;align-items:center;gap:8px;padding:11px 16px;background:#000;color:white;border:0;border-radius:100px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;min-height:44px}
+.marquee-strip{display:flex;align-items:center;justify-content:center;min-height:38px;background:#000;color:#fff;padding:9px 18px;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:600;letter-spacing:.105em}
+main{overflow:clip}
+.hero.cinematic-hero{max-width:none;min-height:clamp(590px,73svh,840px);background:#f7f7f5}
+.hero-media{background-color:#e8e9e2}
+.hero-shade{background:linear-gradient(90deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.14) 53%,rgba(255,255,255,0) 100%)}
+.cinematic-shell{max-width:1328px;padding:80px 44px 100px}
+.cinematic-content{max-width:680px;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.95);border-radius:28px;box-shadow:none;padding:48px 50px 42px;backdrop-filter:blur(8px)}
+.hero-kicker,.eyebrow{font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;font-weight:600;font-size:12px;line-height:1.5}
+.hero-kicker{color:#111;margin-bottom:22px}
+.cinematic-hero h1{font-size:clamp(49px,5.5vw,85px);font-weight:500;line-height:1.06;letter-spacing:-.065em;color:#000;margin:0 0 24px;word-break:keep-all}
+.cinematic-hero h1 em{color:#000;font-weight:700}
+.hero-copy{color:#181818;font-weight:400;font-size:clamp(17px,1.7vw,20px);line-height:1.65}
+.cinematic-actions{margin-top:30px;gap:12px}
+.btn,.cinematic-actions .btn,.demo-btn,.demo-actions button,.video-toggle{border-radius:999px;font:inherit;font-weight:700;min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .18s,background-color .18s,border-color .18s;cursor:pointer}
+.btn{padding:12px 22px;background:white;color:#000;border:1px solid #111}
+.btn.primary,.cinematic-actions .btn.primary,.demo-btn{background:#000;border:1px solid #000;color:#fff}
+.cinematic-actions .btn{padding:14px 22px;border:1px solid #000}
+.cinematic-actions .btn:not(.primary){background:#fff;border-color:#111;color:#000}
+.btn:hover,.demo-btn:hover,.demo-actions button:hover{transform:translateY(-1px);filter:none}
+.btn.primary:hover,.demo-btn:hover{background:#303030}
+.hero-disclaimer{color:#252525;font-size:12px;line-height:1.7;margin-top:22px}
+.hero-control{right:24px;bottom:20px;gap:9px}
+.video-toggle,.hero-credit{background:#fff;color:#111;border-radius:100px;border:1px solid #fff;padding:10px 13px;font-size:11px;min-height:40px}
+.hero-preview-note{max-width:1220px;margin:26px auto 0;background:#fffaf1;border:1px solid #eddcbf;border-radius:14px;padding:16px 22px;color:#4a371e;font-size:13px}
+#service,#helper,#my{max-width:1280px;padding:88px 28px 58px}
+#service{padding-top:104px}
+#price,#booking,#subscription,#admin{max-width:1224px;border-radius:28px;margin:62px auto 78px;padding:58px 54px 66px;scroll-margin-top:105px}
+#price{background:var(--cm-lime)}
+#booking{background:var(--cm-lilac)}
+#subscription{background:var(--cm-cream)}
+#admin{background:var(--cm-navy)}
+.eyebrow{margin:0 0 17px;color:#111}
+#admin>.eyebrow{color:#fff}
+.section-title{align-items:start;margin-bottom:24px;gap:22px}
+.section-title h2{font-size:clamp(35px,4.7vw,58px);font-weight:550;color:#000;line-height:1.12;letter-spacing:-.055em;margin:0 0 8px;word-break:keep-all}
+.section-title p{color:#222;font-size:15px;font-weight:400;line-height:1.55;max-width:350px;margin:8px 0 0}
+#admin .section-title h2,#admin .section-title p{color:#fff}
+#admin .section-title p{opacity:.9}
+.grid{gap:14px}
+.card,.helper,.demo-input{background:#fff;border:1px solid #e6e6e6;border-radius:22px;box-shadow:none}
+.card{padding:28px}
+.card h3,.demo-input h3{color:#111;font-size:23px;font-weight:750;letter-spacing:-.04em;line-height:1.35;margin:0 0 12px}
+.card p,.card li{color:#252525;font-size:16px;line-height:1.7}
+#service .card{min-height:230px;position:relative;padding-top:56px}
+#service .card::before{content:"0" counter(cmservice);counter-increment:cmservice;position:absolute;top:21px;left:28px;font:600 12px ui-monospace,monospace;letter-spacing:.08em}
+#service>.grid{counter-reset:cmservice}
+#price .card{background:rgba(255,255,255,.92);border-color:rgba(0,0,0,.07)}
+#price .price,#subscription .price{font-weight:800;color:#000;font-size:clamp(21px,2.2vw,29px);letter-spacing:-.055em;overflow-wrap:anywhere}
+#subscription .card{border-color:rgba(0,0,0,.09);min-height:220px}
+#helper .demo-input,#my .demo-input{padding:36px}
+.demo-forms,.form-grid{gap:16px}
+.demo-input{padding:30px}
+.demo-input h3{font-size:24px}
+label,.demo-input label{font-size:14px;font-weight:700;color:#161616;line-height:1.5}
+input,select,textarea,.demo-input input,.demo-input select{border:1px solid #d8d8d5;border-radius:9px;background:#fff;color:#111;min-height:49px;padding:12px 14px;font-size:16px}
+textarea{min-height:118px}
+input:focus,select:focus,textarea:focus,.demo-input input:focus,.demo-input select:focus{outline:2px solid #000;outline-offset:2px;border-color:#000}
+.demo-btn{padding:13px 24px;margin-top:20px}
+.demo-btn:disabled{background:#666;cursor:wait}
+.pill{background:#fff;color:#111;border:1px solid #d5d5d5;border-radius:99px;padding:5px 10px;font-size:11px;font-family:ui-monospace,monospace}
+.sublead{color:#262626;line-height:1.7;font-size:16px}
+.hint{color:#353535;font-size:13px;line-height:1.65}
+.result{background:#f7f7f5;color:#141414;border:1px solid #e7e7e7;border-radius:12px;padding:20px;font-size:14px}
+.status{color:#252525}.status.ok{color:#126434}.status.warn{color:#8b3318}
+#admin .admin-wrap{background:rgba(255,255,255,.085);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:26px}
+#admin .guard{background:#fff;color:#151515;border:0;border-radius:13px;padding:20px;line-height:1.65}
+.feature-strip{gap:12px;margin:22px 0}
+.feature-strip .tile{border:1px solid #eee;border-radius:16px;padding:20px;background:#fff}
+.feature-strip b{color:#000;font-size:34px}
+.feature-strip small{color:#222}
+.demo-mini{gap:16px}
+.demo-mini .card{border:1px solid #eee;border-radius:17px;padding:22px}
+.demo-list{gap:9px}
+.demo-row{border:1px solid #ececec;border-radius:10px;padding:15px;background:#fff}
+.demo-row b{color:#111}
+.demo-row small{color:#303030}
+.demo-actions button{min-height:38px;background:#fff;color:#000;border:1px solid #222;padding:8px 13px;font-size:12px}
+.demo-status{color:#1a1a1a;background:#efefec;border-radius:100px}
+#admin #admin-feedback{color:#fff}
+.empty-row{color:#414141}
+#admin .empty-row{color:#444}
+.footer{background:#fff;color:#191919;margin-top:78px;border-top:1px solid #e6e6e6;padding:60px 28px 76px}
+.footin{max-width:1280px;line-height:1.8}
+.footer b{color:#000;font-size:23px;letter-spacing:-.04em}
+#subscription-form{margin-top:20px!important}
+@media(max-width:1120px){
+ .topin{position:relative;max-width:100%;padding:13px 22px;min-height:72px}
+ .menu-toggle{display:inline-flex;margin-left:auto}
+ .nav{position:absolute;top:calc(100% - 1px);right:18px;left:18px;display:none;flex-direction:column;align-items:stretch;gap:4px;padding:16px;background:#fff;border:1px solid #e6e6e6;border-radius:18px;box-shadow:0 16px 50px rgba(0,0,0,.12);max-height:70vh;overflow-y:auto}
+ .nav[data-open="true"]{display:flex}
+ .nav a,.nav a[href="#booking"]{padding:13px 16px;margin:0;font-size:15px}
+ #price,#booking,#subscription,#admin{margin-left:22px;margin-right:22px}
+ .cinematic-shell{padding:75px 28px 95px}
+}
+@media(max-width:860px){
+ .two,.three,.form-grid,.demo-forms,.demo-mini{grid-template-columns:1fr}
+ .section-title{display:block}
+ .section-title h2{margin-bottom:9px}
+ .section-title p{max-width:100%;margin-top:8px}
+ #service .card{min-height:0}
+ #price,#booking,#subscription,#admin{padding:45px 34px 51px}
+ #service,#helper,#my{padding:70px 26px 45px}
+ .feature-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+ html{scroll-padding-top:76px}
+ .topin{padding:12px 17px}
+ .brand{font-size:19px;white-space:normal}
+ .menu-toggle{padding:10px 13px}
+ .marquee-strip{font-size:9px;letter-spacing:.05em;line-height:1.6}
+ .cinematic-hero.hero{min-height:620px}
+ .cinematic-shell{padding:48px 16px 105px}
+ .cinematic-content{padding:30px 23px;background:rgba(255,255,255,.94);border-radius:22px}
+ .cinematic-hero h1{font-size:clamp(43px,10vw,59px)}
+ .hero-copy{font-size:16px}
+ .cinematic-actions .btn{width:100%;min-height:48px}
+ .hero-control{left:12px;right:12px}
+ .hero-credit{font-size:9px}
+ .hero-preview-note{margin:15px 14px 0;padding:14px}
+ #service,#helper,#my{padding:63px 20px 26px}
+ #price,#booking,#subscription,#admin{margin:30px 0 48px;border-radius:0;padding:48px 20px 55px;max-width:none}
+ .section-title h2{font-size:clamp(34px,9vw,45px)}
+ .card,.demo-input,#helper .demo-input,#my .demo-input{padding:22px;border-radius:17px}
+ #service .card{padding-top:55px}
+ #service .card::before{left:22px}
+ #admin .admin-wrap{padding:14px}
+ .feature-strip .tile{padding:14px}
+ .feature-strip b{font-size:26px}
+ .demo-row{align-items:flex-start}
+ .footer{margin-top:40px;padding:44px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+}
 </style></head><body>
 <div class="preview-bar">통합 홈페이지 PREVIEW · 가상 데이터 전용 · 예약/결제/개인정보 실접수 없음</div>
 <header class="top"><div class="topin"><div class="brand">Clean Master<span class="logo-dot">.</span> 스마트 홈케어</div>
-<nav class="nav" aria-label="사이트 메뉴"><a href="#service">서비스</a><a href="#price">요금 안내</a><a href="#helper">문의 정리</a><a href="#booking">예약 체험</a><a href="#subscription">정기구독 체험</a><a href="#my">내 이용내역</a><a href="#admin">운영관리 체험</a></nav></div></header>
+<button type="button" class="menu-toggle" id="menu-toggle" aria-label="메뉴 열기" aria-controls="site-navigation" aria-expanded="false"><span aria-hidden="true">☰</span><span>메뉴</span></button><nav id="site-navigation" class="nav" aria-label="사이트 메뉴"><a href="#service">서비스</a><a href="#price">요금 안내</a><a href="#helper">문의 정리</a><a href="#booking">예약 체험</a><a href="#subscription">정기구독 체험</a><a href="#my">내 이용내역</a><a href="#admin">운영관리 체험</a></nav></div></header>
+<div class="marquee-strip" aria-label="서비스 메시지">CLEAN MASTER &nbsp; / &nbsp; CARE FOR YOUR SPACE &nbsp; / &nbsp; MORE ROOM FOR LIFE</div>
 <main>
 <section class="hero cinematic-hero" aria-labelledby="hero-title">
  <div class="hero-media" aria-hidden="true">
@@ -289,6 +450,7 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
 </section>
 <div class="hero-preview-note">이 페이지는 기능 시연용입니다. <strong>실제 예약·견적·결제·고객정보 접수는 하지 않습니다.</strong> 이름은 반드시 TEST로 시작하는 가상 이름만 사용해 주세요.</div>
 <section id="service">
+<p class="eyebrow">OUR SERVICES</p>
       <div class="section-title">
         <h2>서비스</h2>
         <p>상담 전 필요한 정보를 쉽게 정리합니다.</p>
@@ -300,6 +462,7 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
         <div class="card"><h3>정기 홈케어</h3><p>정기 방문이 필요한 고객의 희망 주기와 공간 상태를 상담합니다.</p></div>
       </div>
     </section><section id="price">
+<p class="eyebrow">PRICING GUIDE</p>
       <div class="section-title">
         <h2>예상 상담 범위</h2>
         <p>최종 금액은 현장·범위 확인 후 확정됩니다.</p>
@@ -312,6 +475,7 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
       </div>
     </section>
 <section id="helper">
+<p class="eyebrow">SMART INQUIRY</p>
  <div class="section-title"><h2>문의 정리 도우미</h2><p>기존 홈페이지 기능을 개인정보 전송 없이 유지했습니다.</p></div>
  <div class="demo-input">
   <div class="demo-forms">
@@ -327,6 +491,7 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
  </div>
 </section>
 <section id="booking">
+<p class="eyebrow">BOOKING EXPERIENCE</p>
  <div class="section-title"><h2>방문 청소 예약 체험</h2><p>고객 신청 → 운영자 확인 → 청소인력 배정</p></div>
  <p class="sublead">고객용 예약 화면입니다. 요청이 생성되면 같은 페이지 아래의 운영관리 화면에서 확정·배정할 수 있습니다. 실제 예약은 접수되지 않습니다.</p>
  <form id="booking-form" class="demo-input">
@@ -344,6 +509,7 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
  </form>
 </section>
 <section id="subscription">
+<p class="eyebrow">SUBSCRIPTION PLANS</p>
  <div class="section-title"><h2>월 정기구독 체험</h2><p>월 2회 / 월 4회 방문 계획</p></div>
  <div class="demo-forms">
   <div class="card"><h3>월 2회 홈케어</h3><p>월 2회 정기 방문을 계획하는 고객용 선택지입니다.</p><p class="price">상담 후 안내</p><p class="hint">결제·정기청구·방문권 차감은 연결되지 않았습니다.</p></div>
@@ -361,6 +527,7 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
  </form>
 </section>
 <section id="my">
+<p class="eyebrow">MY CLEAN MASTER</p>
  <div class="section-title"><h2>내 이용내역 미리보기</h2><p>TEST 고객명으로 같은 브라우저 내역 확인</p></div>
  <div class="demo-input">
   <div class="form-grid"><div><label for="lookup-name">가상 고객명</label><input id="lookup-name" value="TEST 고객 C" maxlength="45" autocomplete="off"></div><div style="display:flex;align-items:end"><button class="demo-btn" id="lookup-btn" type="button">가상 예약·구독 조회</button></div></div>
@@ -369,6 +536,7 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
  </div>
 </section>
 <section id="admin">
+<p class="eyebrow">OPERATIONS STUDIO</p>
  <div class="section-title"><h2>Clean Master 운영관리 체험</h2><p>RC13 업무 기능을 홈페이지 안에 통합했습니다.</p></div>
  <div class="admin-wrap">
   <div class="guard"><strong>관리자 기능은 시연용입니다.</strong> 실제 관리자는 아직 로그인·권한검증이 연결되지 않았습니다. 모든 정보는 가상 데이터이며 새로고침하면 초기화됩니다.</div>
@@ -596,4 +764,22 @@ el('help-copy').addEventListener('click',async()=>{
 });
 render();
 
+</script>
+
+<script>
+/* Preview-only responsive navigation. No network calls or persistence. */
+(()=>{
+ const trigger=document.getElementById('menu-toggle');
+ const nav=document.getElementById('site-navigation');
+ if(!trigger||!nav)return;
+ const close=()=>{nav.dataset.open='false';trigger.setAttribute('aria-expanded','false');trigger.setAttribute('aria-label','메뉴 열기');};
+ trigger.addEventListener('click',()=>{
+  const next=nav.dataset.open!=='true';nav.dataset.open=String(next);
+  trigger.setAttribute('aria-expanded',String(next));
+  trigger.setAttribute('aria-label',next?'메뉴 닫기':'메뉴 열기');
+ });
+ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+ document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!trigger.contains(e.target))close();});
+})();
 </script></body></html>
