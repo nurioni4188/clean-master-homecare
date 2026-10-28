@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Clean Master 실제 권한/DB 통합 시험을 위한 비공개 합성 Staging">
+  <title>Clean Master — 통합 서비스 Staging</title>
+</head>
+<body>
+  <div class="safety-strip">STAGING ONLY · 합성 TEST 데이터 · 실제 예약·결제·고객정보 입력 금지</div>
+  <header class="top">
+    <div class="head-inner"><div class="wordmark">Clean Master<span>.</span></div><span class="header-note">Connected workflow / TEST</span></div>
+  </header>
+  <main class="page">
+    <section class="intro">
+      <span class="eyebrow">CONNECTED HOMECARE EXPERIENCE</span>
+      <h1>청소의 예약부터<br><strong>관리의 마지막까지.</strong></h1>
+      <p>방문 예약, 월 2·4회 정기 홈케어, 내 이용내역과 관리자 처리를 하나의 데이터 흐름으로 검증합니다.</p>
+      <p class="notice">본 화면은 승인된 테스트 계정 전용입니다. 실명·전화·실주소·카드정보를 입력하지 마세요. 결제 및 유료 구독 활성화 기능은 연결되지 않았습니다.</p>
+    </section>
+    <section id="auth-section" class="auth-panel" aria-labelledby="auth-title">
+      <span class="eyebrow">01 / ACCESS</span><h2 id="auth-title">테스트 계정 로그인</h2>
+      <form id="login-form">
+        <label for="email">사전 등록된 테스트 계정 이메일</label>
+        <div class="inline-fields"><input id="email" name="email" type="email" autocomplete="email" required placeholder="등록된 테스트 이메일"><button type="submit" class="btn primary">로그인 링크 요청</button></div>
+      </form>
+      <div class="inline-fields"><button id="logout" type="button" class="btn ghost" hidden>로그아웃</button><button id="refresh" class="btn ghost" type="button" hidden>데이터 새로고침</button></div>
+      <p id="auth-message" class="message" role="status" aria-live="polite">Staging 연결 설정을 확인하고 있습니다.</p>
+    </section>
+    <section id="workspace" hidden>
+      <div class="panel-controls"><div><span class="eyebrow">02 / WORKSPACE</span><h2>통합 서비스 작업공간</h2></div><div><label for="org-select">승인된 조직</label><select id="org-select"></select><p id="role-summary" class="small"></p></div></div>
+      <section class="color-block lime" id="booking-section" aria-labelledby="booking-title">
+        <span class="eyebrow">BOOKING</span><h2 id="booking-title">방문 청소 예약</h2>
+        <p>상담·방문을 신청하면 예약 DB에 저장되고, 관리자 처리 후 마이페이지에서 상태를 확인합니다.</p>
+        <form id="booking-form" class="form-grid">
+          <div><label for="service">청소 서비스</label><select id="service" name="svc" required></select></div>
+          <div><label for="date">희망 방문일</label><input id="date" name="date" type="date" required></div>
+          <div><label for="slot">시작 시간</label><select id="slot" name="slot" required><option value="9">09:00</option><option value="11">11:00</option><option value="14">14:00</option><option value="16">16:00</option></select></div>
+          <div><label for="size">청소 면적(평)</label><input id="size" name="size" type="number" min="1" max="500" value="25" required></div>
+          <div class="wide"><label for="addr">가상 주소(TEST로 시작)</label><input id="addr" name="addr" maxlength="300" placeholder="TEST 서울 가상 주소" required></div>
+          <div class="wide"><label for="note">가상 요청사항</label><textarea id="note" name="note" maxlength="1000" placeholder="TEST 청소 요청 사항"></textarea></div>
+          <label class="check-row wide"><input name="consent" type="checkbox" required> 테스트용 데이터 처리에 동의합니다. (실제 개인정보 입력 금지)</label>
+          <button class="btn primary" type="submit">가상 예약 DB 신청</button>
+        </form>
+        <p id="booking-result" class="message" role="status" aria-live="polite"></p>
+      </section>
+      <section class="color-block lilac" id="subscription-section" aria-labelledby="sub-title">
+        <span class="eyebrow">MONTHLY CARE</span><h2 id="sub-title">정기구독 신청</h2>
+        <p>월 2회 또는 월 4회 상품을 선택합니다. 신청 후 결제대기 상태까지만 DB에 저장됩니다.</p>
+        <form id="subscription-form" class="form-grid">
+          <div class="wide"><label for="plan">확정된 Staging 상품</label><select id="plan" name="plan" required></select></div>
+          <label class="check-row wide"><input name="agreed" type="checkbox" required> 테스트용 구독 신청에 동의합니다. (실제 청구 없음)</label>
+          <button class="btn primary" type="submit">구독 신청(결제대기)</button>
+        </form>
+        <p id="subscription-result" class="message" role="status" aria-live="polite"></p>
+      </section>
+      <section class="section-white" id="mypage-section">
+        <span class="eyebrow">MY CLEAN MASTER</span><h2>나의 이용내역</h2>
+        <div class="stack"><div class="card"><h3>예약 목록</h3><div id="my-bookings" class="rows"></div></div><div class="card"><h3>정기구독 및 취소</h3><div id="my-subscriptions" class="rows"></div></div><div class="card"><h3>청구주기 · 방문권 현황</h3><div id="my-cycles" class="rows"></div><div id="my-visits" class="rows"></div></div></div>
+      </section>
+      <section class="color-block navy" id="admin-section" hidden>
+        <span class="eyebrow">OPERATIONS / ADMIN</span><h2>운영관리</h2>
+        <p>DB에서 관리자 역할을 확인한 계정만 예약 확정·청소인력 배정을 처리합니다.</p>
+        <div class="stack"><div class="card"><h3>예약·배정</h3><div id="admin-bookings" class="rows"></div></div><div class="card"><h3>구독 현황(조회 전용)</h3><div id="admin-subscriptions" class="rows"></div></div></div>
+        <p id="admin-result" class="message" role="status" aria-live="polite"></p>
+      </section>
+    </section>
+  </main>
+  <footer><strong>Clean Master</strong><p>검증용 개발 화면 · 실서비스 아님 · 결제/정산/실고객 접수 미연결</p></footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
