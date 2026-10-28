@@ -168,10 +168,26 @@ async function renderAdmin(){
    controls.push({label:'예약 확정',click:()=>api.bookingAction(b.id,'confirm')});
    controls.push({label:'예약 거절',click:()=>api.bookingAction(b.id,'reject')});
   }
-  if(WRITES&&b.status==='confirmed'&&staff.length){
-   controls.push({label:'청소인력 배정',click:()=>api.bookingAction(b.id,'assign',{cleanerId:staff[0].id})});
-  }
   row(bk,b.id,b.visit_date+' · '+String(b.start_hour).padStart(2,'0')+':00 / '+b.service_id,b.status,controls);
+  if(WRITES&&b.status==='confirmed'&&staff.length){
+   // Do not silently assign the first worker: the administrator chooses explicitly.
+   const right=bk.lastElementChild.querySelector('.row-actions');
+   const choice=document.createElement('select');choice.setAttribute('aria-label',b.id+' 배정할 청소인력 선택');
+   choice.className='staff-select';
+   for(const worker of staff){
+    const opt=document.createElement('option');opt.value=worker.id;opt.textContent=worker.name;choice.append(opt);
+   }
+   const assign=document.createElement('button');assign.type='button';assign.className='small-button';
+   assign.textContent='선택 인력 배정';
+   assign.addEventListener('click',async()=>{
+    if(!choice.value)return msg('admin-result','청소인력을 선택해 주세요.','error');
+    assign.disabled=true;
+    try{await api.bookingAction(b.id,'assign',{cleanerId:choice.value});msg('admin-result','합성 예약 배정 처리됨.','ok');await refresh();}
+    catch(err){msg('admin-result',friendly(err),'error');}
+    finally{assign.disabled=false;}
+   });
+   right.append(choice,assign);
+  }
  }
  if(!bk.children.length)empty(bk,'예약이 없습니다. 관리자는 고객 요청 후 이곳에서 확인합니다.');
  const subs=el('admin-subscriptions');subs.replaceChildren();
