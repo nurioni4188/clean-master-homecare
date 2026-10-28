@@ -1,0 +1,599 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;unsafe-inline&#39;; style-src &#39;unsafe-inline&#39;; img-src data: https://images.pexels.com; media-src https://videos.pexels.com; connect-src &#39;none&#39;; form-action &#39;none&#39;; base-uri &#39;none&#39;"><title>Clean Master | 통합 홈페이지 Preview</title><meta name="description" content="Clean Master 홈케어 서비스 소개와 예약·구독·운영관리 통합 시연용 Preview. 실거래나 고객정보 저장은 지원하지 않습니다."><style>
+    :root {
+      --navy: #0b1f33;
+      --blue: #0066cc;
+      --bg: #f5f5f7;
+      --line: #e5e7eb;
+      --text: #111827;
+      --muted: #555;
+      --warn: #fff7ed;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, "Noto Sans KR", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    a { color: inherit; }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topin {
+      max-width: 1120px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand { font-weight: 900; color: var(--navy); }
+
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .nav a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .hero, section { max-width: 1120px; margin: auto; padding: 42px 20px; }
+    .hero { padding-top: 78px; }
+
+    .badge {
+      display: inline-flex;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.02;
+      letter-spacing: -0.07em;
+      color: var(--navy);
+      margin: 20px 0 16px;
+    }
+
+    .lead { font-size: 20px; line-height: 1.75; color: #334155; max-width: 860px; }
+
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 12px 16px;
+      font-weight: 900;
+      color: #334155;
+      cursor: pointer;
+    }
+
+    .btn.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+    .grid { display: grid; gap: 16px; }
+    .two { grid-template-columns: repeat(2, 1fr); }
+    .three { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
+    }
+
+    .card h3 { margin: 0 0 10px; color: var(--navy); }
+    .card p, .card li { color: #4b5563; line-height: 1.7; }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .section-title h2 { margin: 0; color: var(--navy); font-size: 32px; letter-spacing: -0.05em; }
+    .section-title p { margin: 0; color: var(--muted); }
+
+    .notice {
+      border: 1px solid #fed7aa;
+      background: var(--warn);
+      color: #9a3412;
+      border-radius: 22px;
+      padding: 18px;
+      line-height: 1.7;
+      font-weight: 800;
+    }
+
+    .price { font-size: 28px; font-weight: 900; color: #0b1f33; }
+
+    .helper {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 45px rgba(15, 23, 42, 0.07);
+    }
+
+    label { font-weight: 900; color: var(--navy); display: block; margin: 14px 0 6px; }
+
+    select, textarea, input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      font: inherit;
+      background: #fff;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+    .hint {
+      margin-top: 10px;
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .result {
+      margin-top: 16px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      border-radius: 20px;
+      padding: 18px;
+      line-height: 1.7;
+      color: #1e3a8a;
+      white-space: pre-wrap;
+    }
+
+    .footer {
+      background: var(--navy);
+      color: #cbd5e1;
+      padding: 34px 20px;
+      margin-top: 40px;
+    }
+
+    .footin {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer b { color: #fff; }
+
+    @media (max-width: 860px) {
+      .two, .three, .form-grid { grid-template-columns: 1fr; }
+      .topin { align-items: flex-start; flex-direction: column; }
+      .section-title { display: block; }
+      .hero { padding-top: 48px; }
+    }
+  
+
+/* HERO_V2: brighter premium homecare video, high-contrast ivory content panel */
+.cinematic-hero.hero{position:relative;isolation:isolate;display:flex;align-items:center;max-width:none;min-height:clamp(550px,74svh,850px);padding:0;color:#1b3445;background:#f2f4ef;overflow:hidden}
+.hero-media,.hero-shade{position:absolute;inset:0;pointer-events:none}
+.hero-media{z-index:-2;background-color:#e9efe9;background-image:url("https://images.pexels.com/videos/5744421/a-house-art-at-home-villa-5744421.jpeg?auto=compress&dpr=1&h=750&w=1260");background-position:center 52%;background-size:cover}
+.hero-video{height:100%;width:100%;display:block;object-fit:cover;object-position:center;opacity:0;transition:opacity 800ms ease}
+.hero-video.is-playing{opacity:1}
+.hero-shade{z-index:-1;background:linear-gradient(90deg,rgba(252,251,246,.62) 0%,rgba(252,251,246,.24) 50%,rgba(252,251,246,.02) 100%)}
+.cinematic-shell{max-width:1180px;margin:auto;width:100%;padding:74px 30px 103px}
+.cinematic-content{max-width:650px;padding:42px 42px 36px;background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:0 20px 65px rgba(30,64,75,.12);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.hero-kicker{font-size:12px;font-weight:900;letter-spacing:.19em;color:#27746a;margin:0 0 21px}
+.cinematic-hero h1{color:#17354a;line-height:1.12;font-size:clamp(43px,5.5vw,73px);letter-spacing:-.07em;margin:0 0 22px;text-wrap:balance;text-shadow:none}
+.cinematic-hero h1 em{font-style:normal;color:#246b68}
+.hero-copy{font-size:clamp(16px,1.75vw,20px);line-height:1.8;color:#334a56;max-width:600px}
+.cinematic-actions{margin-top:25px}
+.cinematic-actions .btn{border-radius:13px;padding:14px 21px;min-height:48px}
+.cinematic-actions .btn.primary{background:#145d63;border-color:#145d63;color:#fff}
+.cinematic-actions .btn:not(.primary){border-color:#b6c9c3;background:#fff;color:#1d4a55}
+.cinematic-actions .btn:hover{filter:brightness(.96)}
+.hero-disclaimer{font-size:12px;line-height:1.6;color:#526a6a;margin-top:22px;max-width:590px}
+.hero-control{position:absolute;right:24px;bottom:18px;display:flex;align-items:center;gap:10px;z-index:2}
+.video-toggle{border:1px solid #c7ddd6;color:#204a53;background:rgba(255,255,255,.93);border-radius:999px;padding:9px 14px;font:inherit;font-size:12px;cursor:pointer}
+.video-toggle[hidden]{display:none}
+.hero-credit{font-size:11px;color:#1c4852;text-decoration:none;background:rgba(255,255,255,.9);padding:9px;border-radius:8px}
+.hero-preview-note{max-width:1160px;margin:20px auto 0;padding:15px 22px;border-radius:16px;background:#fff6e7;border:1px solid #e7d6b8;color:#6d4d24;line-height:1.7;font-size:13px}
+@media(max-width:900px){.cinematic-hero.hero{min-height:590px}.cinematic-shell{padding:66px 22px 106px}.cinematic-content{max-width:630px;padding:34px 30px;background:rgba(255,255,255,.87)}.hero-shade{background:linear-gradient(90deg,rgba(255,255,251,.38),rgba(255,255,251,.08))}.hero-control{right:14px;bottom:12px}.hero-credit{font-size:10px}.hero-preview-note{margin:12px 16px 0}}
+@media(max-width:580px){.cinematic-hero.hero{min-height:620px}.cinematic-shell{padding:54px 18px 102px}.cinematic-content{padding:30px 22px;border-radius:23px;background:rgba(255,255,255,.91)}.cinematic-hero h1{font-size:clamp(39px,10vw,54px)}.hero-copy{font-size:16px}.cinematic-actions{gap:9px}.cinematic-actions .btn{width:100%;justify-content:center}.hero-control{left:12px;right:12px;justify-content:flex-end}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none!important;transition:none!important}}
+
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
+.logo-dot{color:#0066cc}.preview-bar{background:#eaf2ff;color:#173f80;text-align:center;font-size:13px;font-weight:800;padding:11px 18px}
+.pill{display:inline-block;background:#eff6ff;color:#1d4ed8;border:1px solid #c6dbfb;border-radius:30px;padding:5px 10px;font-size:12px;font-weight:900;margin:4px 5px 4px 0}
+.nav a:focus-visible,.btn:focus-visible,button:focus-visible{outline:3px solid #fdbe57;outline-offset:3px}
+.sublead{color:#64748b;line-height:1.65;margin:10px 0 18px}
+.demo-forms{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.demo-input{border:1px solid #d8e3f0;border-radius:20px;background:white;padding:24px}
+.demo-input h3{font-size:22px;color:#0b1f33;margin:0 0 12px}
+.demo-input label{font-size:13px;margin-top:14px}
+.demo-input input,.demo-input select{border:1px solid #cbd5e1;border-radius:11px;padding:12px}
+.demo-input input:focus,.demo-input select:focus{outline:2px solid #7baceb}
+.demo-btn{background:#0066cc;color:white;border:0;border-radius:12px;padding:13px 19px;font-weight:900;cursor:pointer;margin-top:18px}
+.demo-btn:disabled{opacity:.6;cursor:wait}
+.status{font-size:13px;line-height:1.7;color:#2c4d78;min-height:20px;margin:14px 0 0}
+.status.ok{color:#15734c}.status.warn{color:#ae4b25}
+.feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.feature-strip .tile{border:1px solid #dbe5f0;background:#fff;border-radius:18px;padding:18px}
+.feature-strip b{display:block;color:#0b1f33;font-size:28px;margin-top:6px}
+.feature-strip small{color:#65758c}
+.admin-wrap{border:1px solid #d5e0ef;background:#f0f5fc;border-radius:26px;padding:24px}
+.demo-list{display:grid;gap:8px}
+.demo-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:white;border:1px solid #dae4ef;border-radius:14px;padding:14px}
+.demo-row b{color:#132b46}.demo-row small{display:block;color:#63748c;margin-top:6px;line-height:1.45}
+.demo-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.demo-actions button{border:1px solid #b9d1ec;color:#20558b;background:#edf5ff;border-radius:10px;padding:8px 10px;font-weight:800;cursor:pointer}
+.demo-actions button:disabled{opacity:.55}
+.demo-status{font-size:12px;color:#2c5b91;background:#eaf2ff;padding:6px 9px;border-radius:20px;white-space:nowrap}
+.demo-mini{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.demo-mini .card{box-shadow:none;padding:17px}
+.guard{background:#fff8e9;border-left:4px solid #f3b654;border-radius:10px;padding:15px 16px;color:#8b4b19;line-height:1.65}
+.empty-row{color:#708197;font-size:14px;line-height:1.6}
+@media(max-width:860px){.demo-forms,.demo-mini{grid-template-columns:1fr}.feature-strip{grid-template-columns:repeat(2,1fr)}.hero{padding-top:50px}.admin-wrap{padding:12px}}
+</style></head><body>
+<div class="preview-bar">통합 홈페이지 PREVIEW · 가상 데이터 전용 · 예약/결제/개인정보 실접수 없음</div>
+<header class="top"><div class="topin"><div class="brand">Clean Master<span class="logo-dot">.</span> 스마트 홈케어</div>
+<nav class="nav" aria-label="사이트 메뉴"><a href="#service">서비스</a><a href="#price">요금 안내</a><a href="#helper">문의 정리</a><a href="#booking">예약 체험</a><a href="#subscription">정기구독 체험</a><a href="#my">내 이용내역</a><a href="#admin">운영관리 체험</a></nav></div></header>
+<main>
+<section class="hero cinematic-hero" aria-labelledby="hero-title">
+ <div class="hero-media" aria-hidden="true">
+  <video id="hero-video" class="hero-video" muted loop playsinline preload="none" poster="https://images.pexels.com/videos/5744421/a-house-art-at-home-villa-5744421.jpeg?auto=compress&amp;dpr=1&amp;h=750&amp;w=1260"></video>
+ </div>
+ <div class="hero-shade" aria-hidden="true"></div>
+ <div class="cinematic-shell">
+  <div class="cinematic-content">
+   <p class="hero-kicker">CLEAN MASTER <span aria-hidden="true">·</span> PREMIUM HOMECARE</p>
+   <h1 id="hero-title">깨끗한 공간,<br><em>더 여유로운 일상.</em></h1>
+   <p class="hero-copy">햇살처럼 밝고 편안한 우리 집.<br>입주·이사청소부터 월 2회·4회 정기 홈케어까지.</p>
+   <div class="actions cinematic-actions"><a class="btn primary" href="#booking">방문 청소 예약 체험</a><a class="btn" href="#subscription">정기 홈케어 살펴보기</a></div>
+   <p class="hero-disclaimer">PREVIEW · 가상 신청만 가능 · 실제 예약·결제·고객정보 저장 없음</p>
+  </div>
+ </div>
+ <div class="hero-control">
+  <button type="button" id="hero-pause" class="video-toggle" aria-label="배경 영상 일시정지" aria-pressed="false" hidden>영상 일시정지</button>
+  <a href="https://www.pexels.com/video/video-of-a-living-room-5744421/" target="_blank" rel="noopener noreferrer" class="hero-credit">홍보용 예시 영상 · Pexels / Abdullah | 4K</a>
+ </div>
+</section>
+<div class="hero-preview-note">이 페이지는 기능 시연용입니다. <strong>실제 예약·견적·결제·고객정보 접수는 하지 않습니다.</strong> 이름은 반드시 TEST로 시작하는 가상 이름만 사용해 주세요.</div>
+<section id="service">
+      <div class="section-title">
+        <h2>서비스</h2>
+        <p>상담 전 필요한 정보를 쉽게 정리합니다.</p>
+      </div>
+
+      <div class="grid three">
+        <div class="card"><h3>입주·이사청소</h3><p>이사 전후 공간의 먼지, 창틀, 주방, 욕실 등 기본 청소 범위를 상담합니다.</p></div>
+        <div class="card"><h3>거주청소</h3><p>거주 중인 집의 생활 오염, 주방·욕실, 부분 청소 필요사항을 정리합니다.</p></div>
+        <div class="card"><h3>정기 홈케어</h3><p>정기 방문이 필요한 고객의 희망 주기와 공간 상태를 상담합니다.</p></div>
+      </div>
+    </section><section id="price">
+      <div class="section-title">
+        <h2>예상 상담 범위</h2>
+        <p>최종 금액은 현장·범위 확인 후 확정됩니다.</p>
+      </div>
+
+      <div class="grid three">
+        <div class="card"><h3>원룸·소형</h3><p class="price">70,000원~150,000원</p><p>면적과 오염도에 따라 달라질 수 있습니다.</p></div>
+        <div class="card"><h3>아파트·빌라</h3><p class="price">100,000원~200,000원</p><p>방·화장실 수와 옵션에 따라 달라질 수 있습니다.</p></div>
+        <div class="card"><h3>정기 관리</h3><p class="price">상담 후 안내</p><p>방문 주기와 관리 범위에 따라 안내합니다.</p></div>
+      </div>
+    </section>
+<section id="helper">
+ <div class="section-title"><h2>문의 정리 도우미</h2><p>기존 홈페이지 기능을 개인정보 전송 없이 유지했습니다.</p></div>
+ <div class="demo-input">
+  <div class="demo-forms">
+   <div><label for="help-service">서비스 유형</label><select id="help-service"><option>입주·이사청소</option><option>거주청소</option><option>정기 홈케어</option><option>부분청소</option></select></div>
+   <div><label for="help-region">상담 지역(광역)</label><select id="help-region"><option>서울</option><option>경기</option></select></div>
+  </div>
+  <label for="help-memo">가상 문의 메모 (실명·전화번호·주소 금지)</label>
+  <textarea id="help-memo" maxlength="300" placeholder="예: TEST 25평, 주방 및 욕실 집중 관리 희망"></textarea>
+  <button id="help-generate" type="button" class="demo-btn">상담 요약 생성</button>
+  <button id="help-copy" type="button" class="btn" style="margin-left:8px">요약 복사</button>
+  <div id="help-result" class="result" role="status" aria-live="polite">입력 내용을 이 브라우저에서만 요약합니다. 실제 상담이 접수되지 않습니다.</div>
+  <p class="hint">자동 견적·상담 접수가 아닙니다. 기존 홈페이지의 Supabase 상담 저장 API는 이번 Preview에서 호출하지 않습니다.</p>
+ </div>
+</section>
+<section id="booking">
+ <div class="section-title"><h2>방문 청소 예약 체험</h2><p>고객 신청 → 운영자 확인 → 청소인력 배정</p></div>
+ <p class="sublead">고객용 예약 화면입니다. 요청이 생성되면 같은 페이지 아래의 운영관리 화면에서 확정·배정할 수 있습니다. 실제 예약은 접수되지 않습니다.</p>
+ <form id="booking-form" class="demo-input">
+ <h3>방문 일정 선택 <span class="pill">TEST ONLY</span></h3>
+ <div class="form-grid">
+  <div><label for="book-name">가상 고객명</label><input id="book-name" name="name" value="TEST 고객 C" maxlength="45" pattern="TEST[ _-].+" required autocomplete="off"></div>
+  <div><label for="book-size">청소 면적(평)</label><input id="book-size" name="sizePy" type="number" min="1" max="500" value="25" required></div>
+  <div><label for="book-service">서비스 종류</label><select id="book-service" name="service"><option>입주·이사청소</option><option>거주청소</option><option>정기 홈케어</option></select></div>
+  <div><label for="book-area">광역 지역</label><select id="book-area" name="area"><option>서울</option><option>경기</option></select></div>
+  <div><label for="book-date">방문 희망일</label><input id="book-date" name="visitDate" type="date" required></div>
+  <div><label for="book-hour">시작 시각</label><select id="book-hour" name="startHour"><option value="9">09:00</option><option value="13">13:00</option><option value="17">17:00</option></select></div>
+  <div><label for="book-duration">방문시간</label><select id="book-duration" name="durationHours"><option value="2">2시간</option><option value="3">3시간</option><option value="4">4시간</option></select></div>
+ </div>
+ <button type="submit" class="demo-btn">가상 예약 요청하기</button><p id="booking-feedback" class="status" role="status" aria-live="polite">실제 업체에는 전달되지 않습니다.</p>
+ </form>
+</section>
+<section id="subscription">
+ <div class="section-title"><h2>월 정기구독 체험</h2><p>월 2회 / 월 4회 방문 계획</p></div>
+ <div class="demo-forms">
+  <div class="card"><h3>월 2회 홈케어</h3><p>월 2회 정기 방문을 계획하는 고객용 선택지입니다.</p><p class="price">상담 후 안내</p><p class="hint">결제·정기청구·방문권 차감은 연결되지 않았습니다.</p></div>
+  <div class="card"><h3>월 4회 홈케어</h3><p>주기적으로 더 자주 관리하고 싶은 고객용 선택지입니다.</p><p class="price">상담 후 안내</p><p class="hint">서비스 조건과 최종 가격은 실제 운영 전 별도 확정해야 합니다.</p></div>
+ </div>
+ <form id="subscription-form" class="demo-input" style="margin-top:16px">
+ <h3>가상 구독 계획 등록 <span class="pill">결제 미연결</span></h3>
+ <div class="form-grid">
+  <div><label for="sub-name">가상 고객명</label><input id="sub-name" name="name" value="TEST 고객 C" maxlength="45" pattern="TEST[ _-].+" required autocomplete="off"></div>
+  <div><label for="sub-size">청소 면적(평)</label><input id="sub-size" name="sizePy" type="number" min="1" max="500" value="25" required></div>
+  <div><label for="sub-plan">방문 계획</label><select id="sub-plan" name="planCode"><option value="monthly_2">월 2회</option><option value="monthly_4">월 4회</option></select></div>
+ </div>
+ <button type="submit" class="demo-btn">가상 구독 초안 등록</button>
+ <p id="subscription-feedback" class="status" role="status" aria-live="polite">구독은 draft(초안) 또는 awaiting_payment(결제대기) 상태까지만 표시됩니다.</p>
+ </form>
+</section>
+<section id="my">
+ <div class="section-title"><h2>내 이용내역 미리보기</h2><p>TEST 고객명으로 같은 브라우저 내역 확인</p></div>
+ <div class="demo-input">
+  <div class="form-grid"><div><label for="lookup-name">가상 고객명</label><input id="lookup-name" value="TEST 고객 C" maxlength="45" autocomplete="off"></div><div style="display:flex;align-items:end"><button class="demo-btn" id="lookup-btn" type="button">가상 예약·구독 조회</button></div></div>
+  <p class="hint">로그인·신원확인 기능이 아닙니다. 이 페이지 안에 만든 TEST 정보만 보여줍니다.</p>
+  <div id="my-results" class="demo-list" aria-live="polite"></div>
+ </div>
+</section>
+<section id="admin">
+ <div class="section-title"><h2>Clean Master 운영관리 체험</h2><p>RC13 업무 기능을 홈페이지 안에 통합했습니다.</p></div>
+ <div class="admin-wrap">
+  <div class="guard"><strong>관리자 기능은 시연용입니다.</strong> 실제 관리자는 아직 로그인·권한검증이 연결되지 않았습니다. 모든 정보는 가상 데이터이며 새로고침하면 초기화됩니다.</div>
+  <div class="feature-strip">
+   <div class="tile"><small>가상 고객</small><b id="metric-customers">—</b></div>
+   <div class="tile"><small>예약 요청</small><b id="metric-requests">—</b></div>
+   <div class="tile"><small>청소인력 배정</small><b id="metric-assigned">—</b></div>
+   <div class="tile"><small>활성 구독 계획</small><b id="metric-subs">—</b></div>
+  </div>
+  <div class="demo-mini">
+   <div class="card"><h3>예약 · 배정 관리</h3><div id="admin-bookings" class="demo-list"></div></div>
+   <div class="card"><h3>정기구독 계획</h3><div id="admin-subscriptions" class="demo-list"></div></div>
+   <div class="card"><h3>가상 고객 목록</h3><div id="admin-customers" class="demo-list"></div></div>
+   <div class="card"><h3>변경 이력</h3><div id="admin-audit" class="demo-list"></div></div>
+  </div>
+  <p id="admin-feedback" class="status" aria-live="polite">운영 화면에서도 실제 결제나 DB 저장은 실행되지 않습니다.</p>
+ </div>
+</section>
+</main><footer class="footer"><div class="footin"><div><b>Clean Master 스마트 홈케어</b><div>서울·경기 홈케어 서비스 · 통합 기능 Preview</div></div><div>고객용 홈페이지 + RC13 예약·구독 운영 시연<br>실제 영업·예약접수·결제 및 개인정보 수집 비활성화</div></div></footer>
+<script>
+/** Clean Master operations-only TEST core. No card, PG, invoice, paid state, PII, or DB. */
+const randomUUID=()=>crypto.randomUUID();
+const plans=Object.freeze([
+  Object.freeze({code:'monthly_2',visits:2,label:'월 2회 방문 계획'}),
+  Object.freeze({code:'monthly_4',visits:4,label:'월 4회 방문 계획'})
+]);
+class OpsError extends Error {
+  constructor(code){super(code);this.code=code}
+}
+function check(test,code){if(!test)throw new OpsError(code)}
+const clone=value=>structuredClone(value);
+const dateOK=value=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&!Number.isNaN(Date.parse(value+'T00:00:00Z'))&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value;
+const syntheticName=value=>typeof value==='string'&&/^TEST[ _-][\p{L}\p{N} _-]{1,40}$/u.test(value.trim());
+const customerNameKey=value=>value.trim().normalize('NFC').replace(/\s+/g,' ').toLocaleLowerCase('ko-KR');
+const id=()=>randomUUID();
+const statuses=Object.freeze({requested:['confirmed','cancelled'],confirmed:['assigned','cancelled'],assigned:['cancelled'],cancelled:[]});
+function createOpsStore(){
+  const customers=[],bookings=[],subscriptions=[],audit=[];
+  let revision=0;
+  const event=(type,entity)=>{revision++;audit.push({revision,type,entity,at:new Date().toISOString()})};
+  const one=(items,ref,code)=>{const value=items.find(x=>x.id===ref);check(value,code);return value};
+  const summary=()=>({mode:'SYNTHETIC_RAM_ONLY',revision,customers:customers.length,
+    bookings:{requested:bookings.filter(x=>x.status==='requested').length,confirmed:bookings.filter(x=>x.status==='confirmed').length,assigned:bookings.filter(x=>x.status==='assigned').length,cancelled:bookings.filter(x=>x.status==='cancelled').length},
+    subscriptions:{draft:subscriptions.filter(x=>x.status==='draft').length,awaiting_payment:subscriptions.filter(x=>x.status==='awaiting_payment').length,cancelled:subscriptions.filter(x=>x.status==='cancelled').length},
+    active_paid_subscriptions:0,external_payments:0});
+  const customerAdd=({name,sizePy=20}={})=>{
+    check(syntheticName(name),'SYNTHETIC_CUSTOMER_NAME_REQUIRED');
+    check(Number.isInteger(sizePy)&&sizePy>=1&&sizePy<=500,'SIZE_OUT_OF_RANGE');
+    check(!customers.some(x=>customerNameKey(x.name)===customerNameKey(name)),'CUSTOMER_ALREADY_EXISTS');
+    check(customers.length<100,'SYNTHETIC_CUSTOMER_CAP');
+    const customer={id:id(),name:name.trim(),sizePy,createdAt:new Date().toISOString()};
+    customers.push(customer);event('customer.created',customer.id);return clone(customer);
+  };
+  const overlap=(a,b)=>a.visitDate===b.visitDate&&a.startHour<b.startHour+b.durationHours&&b.startHour<a.startHour+a.durationHours;
+  const bookingAdd=({customerId,visitDate,startHour=9,durationHours=2,cleaner='TEST cleaner A'}={})=>{
+    one(customers,customerId,'CUSTOMER_NOT_FOUND');
+    check(dateOK(visitDate),'INVALID_VISIT_DATE');
+    check(Number.isInteger(startHour)&&startHour>=6&&startHour<=22,'INVALID_START_HOUR');
+    check(Number.isInteger(durationHours)&&durationHours>=1&&durationHours<=10&&startHour+durationHours<=24,'INVALID_DURATION');
+    check(['TEST cleaner A','TEST cleaner B'].includes(cleaner),'SYNTHETIC_CLEANER_REQUIRED');
+    check(bookings.length<250,'SYNTHETIC_BOOKING_CAP');
+    const candidate={id:id(),customerId,visitDate,startHour,durationHours,cleaner,status:'requested'};
+    check(!bookings.some(x=>x.status!=='cancelled'&&x.customerId===customerId&&overlap(x,candidate)),'CUSTOMER_TIME_CONFLICT');
+    bookings.push(candidate);event('booking.requested',candidate.id);return clone(candidate);
+  };
+  const bookingChange=({bookingId,status,expectedRevision}={})=>{
+    const booking=one(bookings,bookingId,'BOOKING_NOT_FOUND');
+    check(Number.isInteger(expectedRevision)&&expectedRevision===revision,'STALE_REVISION');
+    check(statuses[booking.status]?.includes(status),'BOOKING_TRANSITION_REJECTED');
+    if(status==='assigned')check(!bookings.some(x=>x.id!==booking.id&&x.status==='assigned'&&x.cleaner===booking.cleaner&&overlap(x,booking)),'CLEANER_TIME_CONFLICT');
+    booking.status=status;event('booking.'+status,booking.id);return clone(booking);
+  };
+  const subscriptionAdd=({customerId,planCode}={})=>{
+    one(customers,customerId,'CUSTOMER_NOT_FOUND');
+    const plan=plans.find(x=>x.code===planCode);check(plan,'UNKNOWN_PLAN');
+    check(!subscriptions.some(x=>x.customerId===customerId&&x.status!=='cancelled'),'CUSTOMER_SUBSCRIPTION_ALREADY_EXISTS');
+    check(subscriptions.length<100,'SYNTHETIC_SUBSCRIPTION_CAP');
+    const subscription={id:id(),customerId,planCode,visitsPerMonth:plan.visits,status:'draft',paymentStatus:'NOT_CONNECTED'};
+    subscriptions.push(subscription);event('subscription.draft',subscription.id);return clone(subscription);
+  };
+  const subscriptionChange=({subscriptionId,status,expectedRevision}={})=>{
+    const sub=one(subscriptions,subscriptionId,'SUBSCRIPTION_NOT_FOUND');
+    check(Number.isInteger(expectedRevision)&&expectedRevision===revision,'STALE_REVISION');
+    check((sub.status==='draft'&&['awaiting_payment','cancelled'].includes(status))||(sub.status==='awaiting_payment'&&status==='cancelled'),'SUBSCRIPTION_TRANSITION_REJECTED');
+    sub.status=status;event('subscription.'+status,sub.id);return clone(sub);
+  };
+  return Object.freeze({summary,plans:()=>clone(plans),customers:()=>clone(customers),bookings:()=>clone(bookings),subscriptions:()=>clone(subscriptions),audit:()=>clone(audit),customerAdd,bookingAdd,bookingChange,subscriptionAdd,subscriptionChange});
+}
+
+
+
+/* INTEGRATED_APP_START */
+/* HERO_VIDEO_CONTROLLER_V1: no third-party scripts, lazy desktop-only video */
+(() => {
+ const video=document.getElementById('hero-video'),button=document.getElementById('hero-pause');
+ const clip='https://videos.pexels.com/video-files/5744421/5744421-uhd_3840_2160_30fps.mp4';
+ const eligible=window.matchMedia('(min-width: 901px) and (prefers-reduced-motion: no-preference)');
+ let loaded=false;
+ const show=on=>{ video.classList.toggle('is-playing',on);button.hidden=!on; };
+ const start=()=>{
+  if(loaded || !eligible.matches || document.hidden || navigator.connection?.saveData)return;
+  loaded=true;video.muted=true;video.src=clip;
+  video.addEventListener('playing',()=>show(true));
+  video.addEventListener('error',()=>show(false));
+  const attempt=video.play();
+  if(attempt&&typeof attempt.catch==='function')attempt.catch(()=>show(false));
+ };
+ const stop=()=>{video.pause();show(false)};
+ if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){obs.disconnect();start()}},{rootMargin:'100px'});
+  obs.observe(video);
+ }else{start()}
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){stop()}else if(eligible.matches){if(loaded){video.play().catch(()=>show(false))}else{start()}}});
+ eligible.addEventListener?.('change',e=>{if(!e.matches)stop();else start()});
+ button.addEventListener('click',()=>{
+  if(video.paused){video.play().catch(()=>show(false));button.textContent='영상 일시정지';button.setAttribute('aria-pressed','false')}
+  else{video.pause();video.classList.remove('is-playing');button.hidden=false;button.textContent='영상 재생';button.setAttribute('aria-pressed','true')}
+ });
+ video.addEventListener('play',()=>{button.textContent='영상 일시정지';button.setAttribute('aria-pressed','false')});
+})();
+
+
+const el=id=>document.getElementById(id);
+const store=createOpsStore();
+const a=store.customerAdd({name:'TEST 고객 A',sizePy:20});
+const b=store.customerAdd({name:'TEST 고객 B',sizePy:32});
+store.subscriptionAdd({customerId:a.id,planCode:'monthly_2'});
+const seedDate=new Date();seedDate.setDate(seedDate.getDate()+3);
+const dateStr=seedDate.getFullYear()+'-'+String(seedDate.getMonth()+1).padStart(2,'0')+'-'+String(seedDate.getDate()).padStart(2,'0');
+store.bookingAdd({customerId:b.id,visitDate:dateStr,startHour:9});
+el('book-date').value=dateStr;el('book-date').min=new Date().toLocaleDateString('sv-SE');
+const formatStatus={requested:'예약 요청',confirmed:'예약 확정',assigned:'청소인력 배정',cancelled:'취소',draft:'구독 초안',awaiting_payment:'결제대기'};
+const errors={SYNTHETIC_CUSTOMER_NAME_REQUIRED:'TEST로 시작하는 가상 고객명만 사용할 수 있습니다.',SIZE_OUT_OF_RANGE:'면적은 1~500평으로 입력해 주세요.',CUSTOMER_ALREADY_EXISTS:'이미 같은 이름의 가상 고객이 있습니다.',CUSTOMER_TIME_CONFLICT:'같은 고객의 예약 시간이 겹칩니다.',CLEANER_TIME_CONFLICT:'해당 청소인력의 배정 시간이 겹칩니다.',CUSTOMER_SUBSCRIPTION_ALREADY_EXISTS:'이미 해당 고객의 구독 계획이 등록되어 있습니다.',STALE_REVISION:'화면 정보가 변경됐습니다. 다시 시도해 주세요.',INVALID_VISIT_DATE:'날짜를 다시 확인해 주세요.',SUBSCRIPTION_TRANSITION_REJECTED:'결제 확인 없이 유료 구독으로 변경할 수 없습니다.'};
+const customerById=id=>store.customers().find(x=>x.id===id);
+function findOrMakeCustomer(name,size){
+ const normal=String(name||'').trim().normalize('NFC').replace(/\s+/g,' ').toLocaleLowerCase('ko-KR');
+ if(!/^test[ _-]/i.test(normal))throw new OpsError('SYNTHETIC_CUSTOMER_NAME_REQUIRED');
+ const existing=store.customers().find(x=>x.name.normalize('NFC').replace(/\s+/g,' ').toLocaleLowerCase('ko-KR')===normal);
+ if(existing)return existing;
+ return store.customerAdd({name,sizePy:size});
+}
+function notify(id,message,ok){
+ const e=el(id);e.textContent=message;e.className='status '+(ok?'ok':'warn');
+}
+function boxRow(parent,title,detail,status,actions){
+ const item=document.createElement('div');item.className='demo-row';
+ const info=document.createElement('div'),heading=document.createElement('b'),sub=document.createElement('small');
+ heading.textContent=title;sub.textContent=detail;info.append(heading,sub);item.append(info);
+ const group=document.createElement('div');group.className='demo-actions';
+ const tag=document.createElement('span');tag.className='demo-status';tag.textContent=status;group.append(tag);
+ for(const action of actions||[]){
+  const button=document.createElement('button');button.type='button';button.textContent=action[0];button.addEventListener('click',action[1]);group.append(button);
+ }
+ item.append(group);parent.append(item);
+}
+function render(){
+ const stats=store.summary();
+ el('metric-customers').textContent=stats.customers;
+ el('metric-requests').textContent=stats.bookings.requested;
+ el('metric-assigned').textContent=stats.bookings.assigned;
+ el('metric-subs').textContent=stats.subscriptions.draft+stats.subscriptions.awaiting_payment;
+ for(const id of ['admin-bookings','admin-subscriptions','admin-customers','admin-audit'])el(id).replaceChildren();
+ for(const item of store.bookings()){
+  const customer=customerById(item.customerId);
+  const actions=item.status==='requested'?[['확정',()=>actionBooking(item.id,'confirmed')],['취소',()=>actionBooking(item.id,'cancelled')]]:item.status==='confirmed'?[['배정',()=>actionBooking(item.id,'assigned')],['취소',()=>actionBooking(item.id,'cancelled')]]:item.status==='assigned'?[['취소',()=>actionBooking(item.id,'cancelled')]]:[];
+  boxRow(el('admin-bookings'),customer?.name||'TEST',item.visitDate+' · '+String(item.startHour).padStart(2,'0')+':00 · '+item.cleaner,formatStatus[item.status]||item.status,actions);
+ }
+ for(const item of store.subscriptions()){
+  const customer=customerById(item.customerId);
+  const actions=item.status==='draft'?[['결제대기',()=>actionSub(item.id,'awaiting_payment')],['취소',()=>actionSub(item.id,'cancelled')]]:item.status==='awaiting_payment'?[['취소',()=>actionSub(item.id,'cancelled')]]:[];
+  boxRow(el('admin-subscriptions'),customer?.name||'TEST',item.visitsPerMonth+'회/월 · 실제 결제 미연결',formatStatus[item.status]||item.status,actions);
+ }
+ for(const item of store.customers())boxRow(el('admin-customers'),item.name,item.sizePy+'평 · TEST 전용','가상',[]);
+ for(const item of store.audit().slice(-8).reverse())boxRow(el('admin-audit'),item.type,'버전 '+item.revision+' · '+item.at.slice(0,19),'기록',[]);
+}
+function actionBooking(id,status){
+ try{store.bookingChange({bookingId:id,status,expectedRevision:store.summary().revision});render();notify('admin-feedback','PASS · 예약 상태가 가상 운영화면에 반영됐습니다.',true);}
+ catch(e){notify('admin-feedback',errors[e.code]||e.message,false)}
+}
+function actionSub(id,status){
+ try{store.subscriptionChange({subscriptionId:id,status,expectedRevision:store.summary().revision});render();notify('admin-feedback','PASS · 구독 계획 상태 변경. 실제 결제는 발생하지 않았습니다.',true);}
+ catch(e){notify('admin-feedback',errors[e.code]||e.message,false)}
+}
+function safeSubmit(formId,feedback,fn){
+ const form=el(formId);
+ form.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(form.dataset.busy==='1')return;
+  const btn=form.querySelector('button[type=submit]');form.dataset.busy='1';btn.disabled=true;
+  try{const input=Object.fromEntries(new FormData(form));fn(input);render();notify(feedback,'완료 · 가상 데이터가 통합 운영관리 화면에 반영됐습니다. 실제 접수는 아닙니다.',true)}
+  catch(err){notify(feedback,errors[err.code]||('시연 요청을 처리하지 못했습니다. '+err.message),false)}
+  finally{btn.disabled=false;form.dataset.busy='0';}
+ });
+}
+safeSubmit('booking-form','booking-feedback',values=>{
+ const customer=findOrMakeCustomer(values.name,Number(values.sizePy));
+ store.bookingAdd({customerId:customer.id,visitDate:values.visitDate,startHour:Number(values.startHour),durationHours:Number(values.durationHours),cleaner:'TEST cleaner A'});
+ el('lookup-name').value=customer.name;
+});
+safeSubmit('subscription-form','subscription-feedback',values=>{
+ const customer=findOrMakeCustomer(values.name,Number(values.sizePy));
+ store.subscriptionAdd({customerId:customer.id,planCode:values.planCode});
+ el('lookup-name').value=customer.name;
+});
+el('lookup-btn').addEventListener('click',()=>{
+ const name=el('lookup-name').value.trim().normalize('NFC').replace(/\s+/g,' ').toLocaleLowerCase('ko-KR');
+ const out=el('my-results');out.replaceChildren();
+ const customer=store.customers().find(x=>x.name.normalize('NFC').replace(/\s+/g,' ').toLocaleLowerCase('ko-KR')===name);
+ if(!customer){const p=document.createElement('p');p.className='empty-row';p.textContent='해당 이름으로 만든 가상 이용내역이 없습니다.';out.append(p);return;}
+ for(const booking of store.bookings().filter(x=>x.customerId===customer.id))boxRow(out,'방문 청소',booking.visitDate+' '+booking.startHour+':00',formatStatus[booking.status]||booking.status,[]);
+ for(const sub of store.subscriptions().filter(x=>x.customerId===customer.id))boxRow(out,'월 '+sub.visitsPerMonth+'회 구독 계획','결제 미연결',formatStatus[sub.status]||sub.status,[]);
+ if(!out.children.length){const p=document.createElement('p');p.className='empty-row';p.textContent='아직 가상 예약·구독 내역이 없습니다.';out.append(p);}
+});
+
+let helpText='';
+el('help-generate').addEventListener('click',()=>{
+ const service=el('help-service').value,region=el('help-region').value,memo=el('help-memo').value.trim();
+ helpText='[Clean Master 가상 상담 요약]\n서비스: '+service+'\n광역 지역: '+region+'\n가상 메모: '+(memo||'미입력')+'\n\n※ 예상 범위 정리용이며 실제 접수·견적·예약 확정이 아닙니다.';
+ el('help-result').textContent=helpText;
+});
+el('help-copy').addEventListener('click',async()=>{
+ if(!helpText){el('help-result').textContent='먼저 상담 요약 생성을 눌러 주세요.';return;}
+ try{await navigator.clipboard.writeText(helpText);el('help-result').textContent=helpText+'\n\n요약 복사 완료';}
+ catch{el('help-result').textContent=helpText+'\n\n자동 복사가 차단된 브라우저입니다. 내용을 직접 선택해 복사해 주세요.';}
+});
+render();
+
+</script></body></html>
