@@ -202,31 +202,32 @@
     }
   
 
-/* HERO_V1: cinematic, mobile-static and reduced-motion safe */
-.cinematic-hero.hero{position:relative;isolation:isolate;display:flex;align-items:center;max-width:none;min-height:clamp(550px,74svh,850px);padding:0;color:#fff;background:#172d3a;overflow:hidden}
+/* HERO_V2: brighter premium homecare video, high-contrast ivory content panel */
+.cinematic-hero.hero{position:relative;isolation:isolate;display:flex;align-items:center;max-width:none;min-height:clamp(550px,74svh,850px);padding:0;color:#1b3445;background:#f2f4ef;overflow:hidden}
 .hero-media,.hero-shade{position:absolute;inset:0;pointer-events:none}
-.hero-media{z-index:-2;background-color:#294b58;background-image:url("https://images.pexels.com/videos/5744421/a-house-art-at-home-villa-5744421.jpeg?auto=compress&dpr=1&h=750&w=1260");background-position:center 52%;background-size:cover}
+.hero-media{z-index:-2;background-color:#e9efe9;background-image:url("https://images.pexels.com/videos/5744421/a-house-art-at-home-villa-5744421.jpeg?auto=compress&dpr=1&h=750&w=1260");background-position:center 52%;background-size:cover}
 .hero-video{height:100%;width:100%;display:block;object-fit:cover;object-position:center;opacity:0;transition:opacity 800ms ease}
 .hero-video.is-playing{opacity:1}
-.hero-shade{z-index:-1;background:linear-gradient(90deg,rgba(8,29,43,.81) 0%,rgba(11,34,46,.6) 43%,rgba(12,31,42,.12) 100%),linear-gradient(0deg,rgba(9,24,34,.35),transparent 40%)}
-.cinematic-shell{max-width:1180px;margin:auto;width:100%;padding:78px 30px 110px}
-.cinematic-content{max-width:760px}
-.hero-kicker{font-size:12px;font-weight:900;letter-spacing:.19em;color:#d6ecea;margin:0 0 21px}
-.cinematic-hero h1{color:white;line-height:1.12;font-size:clamp(43px,5.5vw,76px);letter-spacing:-.07em;margin:0 0 22px;text-wrap:balance;text-shadow:0 3px 20px #071c2933}
-.cinematic-hero h1 em{font-style:normal;color:#c6ebdf}
-.hero-copy{font-size:clamp(16px,1.75vw,21px);line-height:1.85;color:#eef8f7;max-width:600px}
-.cinematic-actions{margin-top:26px}
-.cinematic-actions .btn{border-radius:13px;padding:15px 24px;min-height:48px}
-.cinematic-actions .btn.primary{background:#e3f4ed;border-color:#e3f4ed;color:#113c40}
-.cinematic-actions .btn:not(.primary){border-color:#d2ece0a9;background:#143b4691;color:white}
-.hero-disclaimer{font-size:12px;line-height:1.6;color:#d7e4e3;margin-top:23px;max-width:660px}
+.hero-shade{z-index:-1;background:linear-gradient(90deg,rgba(252,251,246,.62) 0%,rgba(252,251,246,.24) 50%,rgba(252,251,246,.02) 100%)}
+.cinematic-shell{max-width:1180px;margin:auto;width:100%;padding:74px 30px 103px}
+.cinematic-content{max-width:650px;padding:42px 42px 36px;background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.9);border-radius:30px;box-shadow:0 20px 65px rgba(30,64,75,.12);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.hero-kicker{font-size:12px;font-weight:900;letter-spacing:.19em;color:#27746a;margin:0 0 21px}
+.cinematic-hero h1{color:#17354a;line-height:1.12;font-size:clamp(43px,5.5vw,73px);letter-spacing:-.07em;margin:0 0 22px;text-wrap:balance;text-shadow:none}
+.cinematic-hero h1 em{font-style:normal;color:#246b68}
+.hero-copy{font-size:clamp(16px,1.75vw,20px);line-height:1.8;color:#334a56;max-width:600px}
+.cinematic-actions{margin-top:25px}
+.cinematic-actions .btn{border-radius:13px;padding:14px 21px;min-height:48px}
+.cinematic-actions .btn.primary{background:#145d63;border-color:#145d63;color:#fff}
+.cinematic-actions .btn:not(.primary){border-color:#b6c9c3;background:#fff;color:#1d4a55}
+.cinematic-actions .btn:hover{filter:brightness(.96)}
+.hero-disclaimer{font-size:12px;line-height:1.6;color:#526a6a;margin-top:22px;max-width:590px}
 .hero-control{position:absolute;right:24px;bottom:18px;display:flex;align-items:center;gap:10px;z-index:2}
-.video-toggle{border:1px solid #ffffff70;color:white;background:#0d3445ba;border-radius:999px;padding:9px 14px;font:inherit;font-size:12px;cursor:pointer}
+.video-toggle{border:1px solid #c7ddd6;color:#204a53;background:rgba(255,255,255,.93);border-radius:999px;padding:9px 14px;font:inherit;font-size:12px;cursor:pointer}
 .video-toggle[hidden]{display:none}
-.hero-credit{font-size:11px;color:#f1f5f9;text-decoration:none;background:#122c3da8;padding:9px;border-radius:8px}
+.hero-credit{font-size:11px;color:#1c4852;text-decoration:none;background:rgba(255,255,255,.9);padding:9px;border-radius:8px}
 .hero-preview-note{max-width:1160px;margin:20px auto 0;padding:15px 22px;border-radius:16px;background:#fff6e7;border:1px solid #e7d6b8;color:#6d4d24;line-height:1.7;font-size:13px}
-@media(max-width:900px){.cinematic-hero.hero{min-height:590px}.cinematic-shell{padding:85px 22px 108px}.hero-shade{background:linear-gradient(90deg,rgba(8,29,43,.77),rgba(8,29,43,.44))}.hero-control{right:14px;bottom:12px}.hero-credit{font-size:10px}.hero-preview-note{margin:12px 16px 0}}
-@media(max-width:580px){.cinematic-hero.hero{min-height:620px}.cinematic-shell{padding:66px 21px 110px}.cinematic-hero h1{font-size:clamp(42px,11vw,59px)}.hero-copy{font-size:16px}.cinematic-actions{gap:9px}.cinematic-actions .btn{width:100%;justify-content:center}.hero-control{left:12px;right:12px;justify-content:flex-end}}
+@media(max-width:900px){.cinematic-hero.hero{min-height:590px}.cinematic-shell{padding:66px 22px 106px}.cinematic-content{max-width:630px;padding:34px 30px;background:rgba(255,255,255,.87)}.hero-shade{background:linear-gradient(90deg,rgba(255,255,251,.38),rgba(255,255,251,.08))}.hero-control{right:14px;bottom:12px}.hero-credit{font-size:10px}.hero-preview-note{margin:12px 16px 0}}
+@media(max-width:580px){.cinematic-hero.hero{min-height:620px}.cinematic-shell{padding:54px 18px 102px}.cinematic-content{padding:30px 22px;border-radius:23px;background:rgba(255,255,255,.91)}.cinematic-hero h1{font-size:clamp(39px,10vw,54px)}.hero-copy{font-size:16px}.cinematic-actions{gap:9px}.cinematic-actions .btn{width:100%;justify-content:center}.hero-control{left:12px;right:12px;justify-content:flex-end}}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none!important;transition:none!important}}
 
 html{scroll-behavior:smooth;scroll-padding-top:85px}
