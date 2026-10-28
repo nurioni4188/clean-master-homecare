@@ -22,7 +22,7 @@ test('homepage retains original services and price labels but no PII placeholder
  assert.match(html,/connect-src &#39;none&#39;/);
  assert.match(html,/media-src https:\/\/videos\.pexels\.com/);
  assert.match(html,/img-src data: https:\/\/images\.pexels\.com/);
- const externalUrls=html.match(/https?:\/\/[^\\s"'<>]+/g)||[];
+ const externalUrls=html.match(/https?:\/\/[^\s"'<>]+/g)||[];
  assert.ok(externalUrls.length>=2,'Expected official licensed hero video and poster');
  for(const url of externalUrls){
   const hostname=new URL(url.replaceAll('&amp;','&')).hostname;
