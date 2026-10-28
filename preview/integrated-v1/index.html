@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;unsafe-inline&#39;; style-src &#39;unsafe-inline&#39;; img-src data:; connect-src &#39;none&#39;; form-action &#39;none&#39;; base-uri &#39;none&#39;"><title>Clean Master | 통합 홈페이지 Preview</title><meta name="description" content="Clean Master 홈케어 서비스 소개와 예약·구독·운영관리 통합 시연용 Preview. 실거래나 고객정보 저장은 지원하지 않습니다."><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;unsafe-inline&#39;; style-src &#39;unsafe-inline&#39;; img-src data: https://images.pexels.com; media-src https://videos.pexels.com; connect-src &#39;none&#39;; form-action &#39;none&#39;; base-uri &#39;none&#39;"><title>Clean Master | 통합 홈페이지 Preview</title><meta name="description" content="Clean Master 홈케어 서비스 소개와 예약·구독·운영관리 통합 시연용 Preview. 실거래나 고객정보 저장은 지원하지 않습니다."><style>
     :root {
       --navy: #0b1f33;
       --blue: #0066cc;
@@ -201,6 +201,34 @@
       .hero { padding-top: 48px; }
     }
   
+
+/* HERO_V1: cinematic, mobile-static and reduced-motion safe */
+.cinematic-hero.hero{position:relative;isolation:isolate;display:flex;align-items:center;max-width:none;min-height:clamp(550px,74svh,850px);padding:0;color:#fff;background:#172d3a;overflow:hidden}
+.hero-media,.hero-shade{position:absolute;inset:0;pointer-events:none}
+.hero-media{z-index:-2;background-color:#294b58;background-image:url("https://images.pexels.com/videos/5744421/a-house-art-at-home-villa-5744421.jpeg?auto=compress&dpr=1&h=750&w=1260");background-position:center 52%;background-size:cover}
+.hero-video{height:100%;width:100%;display:block;object-fit:cover;object-position:center;opacity:0;transition:opacity 800ms ease}
+.hero-video.is-playing{opacity:1}
+.hero-shade{z-index:-1;background:linear-gradient(90deg,rgba(8,29,43,.81) 0%,rgba(11,34,46,.6) 43%,rgba(12,31,42,.12) 100%),linear-gradient(0deg,rgba(9,24,34,.35),transparent 40%)}
+.cinematic-shell{max-width:1180px;margin:auto;width:100%;padding:78px 30px 110px}
+.cinematic-content{max-width:760px}
+.hero-kicker{font-size:12px;font-weight:900;letter-spacing:.19em;color:#d6ecea;margin:0 0 21px}
+.cinematic-hero h1{color:white;line-height:1.12;font-size:clamp(43px,5.5vw,76px);letter-spacing:-.07em;margin:0 0 22px;text-wrap:balance;text-shadow:0 3px 20px #071c2933}
+.cinematic-hero h1 em{font-style:normal;color:#c6ebdf}
+.hero-copy{font-size:clamp(16px,1.75vw,21px);line-height:1.85;color:#eef8f7;max-width:600px}
+.cinematic-actions{margin-top:26px}
+.cinematic-actions .btn{border-radius:13px;padding:15px 24px;min-height:48px}
+.cinematic-actions .btn.primary{background:#e3f4ed;border-color:#e3f4ed;color:#113c40}
+.cinematic-actions .btn:not(.primary){border-color:#d2ece0a9;background:#143b4691;color:white}
+.hero-disclaimer{font-size:12px;line-height:1.6;color:#d7e4e3;margin-top:23px;max-width:660px}
+.hero-control{position:absolute;right:24px;bottom:18px;display:flex;align-items:center;gap:10px;z-index:2}
+.video-toggle{border:1px solid #ffffff70;color:white;background:#0d3445ba;border-radius:999px;padding:9px 14px;font:inherit;font-size:12px;cursor:pointer}
+.video-toggle[hidden]{display:none}
+.hero-credit{font-size:11px;color:#f1f5f9;text-decoration:none;background:#122c3da8;padding:9px;border-radius:8px}
+.hero-preview-note{max-width:1160px;margin:20px auto 0;padding:15px 22px;border-radius:16px;background:#fff6e7;border:1px solid #e7d6b8;color:#6d4d24;line-height:1.7;font-size:13px}
+@media(max-width:900px){.cinematic-hero.hero{min-height:590px}.cinematic-shell{padding:85px 22px 108px}.hero-shade{background:linear-gradient(90deg,rgba(8,29,43,.77),rgba(8,29,43,.44))}.hero-control{right:14px;bottom:12px}.hero-credit{font-size:10px}.hero-preview-note{margin:12px 16px 0}}
+@media(max-width:580px){.cinematic-hero.hero{min-height:620px}.cinematic-shell{padding:66px 21px 110px}.cinematic-hero h1{font-size:clamp(42px,11vw,59px)}.hero-copy{font-size:16px}.cinematic-actions{gap:9px}.cinematic-actions .btn{width:100%;justify-content:center}.hero-control{left:12px;right:12px;justify-content:flex-end}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none!important;transition:none!important}}
+
 html{scroll-behavior:smooth;scroll-padding-top:85px}
 body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
 .logo-dot{color:#0066cc}.preview-bar{background:#eaf2ff;color:#173f80;text-align:center;font-size:13px;font-weight:800;padding:11px 18px}
@@ -239,13 +267,26 @@ body{background:#f6f8fc} .top{box-shadow:0 8px 20px rgba(12,38,65,.04)}
 <header class="top"><div class="topin"><div class="brand">Clean Master<span class="logo-dot">.</span> 스마트 홈케어</div>
 <nav class="nav" aria-label="사이트 메뉴"><a href="#service">서비스</a><a href="#price">요금 안내</a><a href="#helper">문의 정리</a><a href="#booking">예약 체험</a><a href="#subscription">정기구독 체험</a><a href="#my">내 이용내역</a><a href="#admin">운영관리 체험</a></nav></div></header>
 <main>
-<section class="hero">
-<span class="badge">서울·경기 홈케어 · 통합 홈페이지 시연판</span>
-<h1>깨끗한 일상,<br>간편한 청소 예약.</h1>
-<p class="lead">입주·이사청소부터 정기 홈케어까지 서비스 안내를 확인하고, 예약 신청부터 운영자 배정·구독 상태 변경까지 하나의 화면에서 체험할 수 있습니다.</p>
-<div class="actions"><a class="btn primary" href="#booking">방문 예약 체험</a><a class="btn" href="#subscription">월 정기구독 체험</a><a class="btn" href="#admin">관리자 운영 체험</a></div>
-<div class="notice" style="margin-top:26px">이 사이트는 기능 시연용입니다. <strong>실제 예약·견적·청구·고객정보 접수가 아닙니다.</strong> 이름은 반드시 TEST로 시작하는 가상 이름만 사용하세요. 전화번호·상세주소·실명은 입력하지 마세요.</div>
+<section class="hero cinematic-hero" aria-labelledby="hero-title">
+ <div class="hero-media" aria-hidden="true">
+  <video id="hero-video" class="hero-video" muted loop playsinline preload="none" poster="https://images.pexels.com/videos/5744421/a-house-art-at-home-villa-5744421.jpeg?auto=compress&amp;dpr=1&amp;h=750&amp;w=1260"></video>
+ </div>
+ <div class="hero-shade" aria-hidden="true"></div>
+ <div class="cinematic-shell">
+  <div class="cinematic-content">
+   <p class="hero-kicker">CLEAN MASTER <span aria-hidden="true">·</span> PREMIUM HOMECARE</p>
+   <h1 id="hero-title">깨끗한 공간,<br><em>더 여유로운 일상.</em></h1>
+   <p class="hero-copy">햇살처럼 밝고 편안한 우리 집.<br>입주·이사청소부터 월 2회·4회 정기 홈케어까지.</p>
+   <div class="actions cinematic-actions"><a class="btn primary" href="#booking">방문 청소 예약 체험</a><a class="btn" href="#subscription">정기 홈케어 살펴보기</a></div>
+   <p class="hero-disclaimer">PREVIEW · 가상 신청만 가능 · 실제 예약·결제·고객정보 저장 없음</p>
+  </div>
+ </div>
+ <div class="hero-control">
+  <button type="button" id="hero-pause" class="video-toggle" aria-label="배경 영상 일시정지" aria-pressed="false" hidden>영상 일시정지</button>
+  <a href="https://www.pexels.com/video/video-of-a-living-room-5744421/" target="_blank" rel="noopener noreferrer" class="hero-credit">홍보용 예시 영상 · Pexels / Abdullah | 4K</a>
+ </div>
 </section>
+<div class="hero-preview-note">이 페이지는 기능 시연용입니다. <strong>실제 예약·견적·결제·고객정보 접수는 하지 않습니다.</strong> 이름은 반드시 TEST로 시작하는 가상 이름만 사용해 주세요.</div>
 <section id="service">
       <div class="section-title">
         <h2>서비스</h2>
@@ -416,6 +457,36 @@ function createOpsStore(){
   return Object.freeze({summary,plans:()=>clone(plans),customers:()=>clone(customers),bookings:()=>clone(bookings),subscriptions:()=>clone(subscriptions),audit:()=>clone(audit),customerAdd,bookingAdd,bookingChange,subscriptionAdd,subscriptionChange});
 }
 
+
+
+/* HERO_VIDEO_CONTROLLER_V1: no third-party scripts, lazy desktop-only video */
+(() => {
+ const video=document.getElementById('hero-video'),button=document.getElementById('hero-pause');
+ const clip='https://videos.pexels.com/video-files/5744421/5744421-uhd_3840_2160_30fps.mp4';
+ const eligible=window.matchMedia('(min-width: 901px) and (prefers-reduced-motion: no-preference)');
+ let loaded=false;
+ const show=on=>{ video.classList.toggle('is-playing',on);button.hidden=!on; };
+ const start=()=>{
+  if(loaded || !eligible.matches || document.hidden || navigator.connection?.saveData)return;
+  loaded=true;video.muted=true;video.src=clip;
+  video.addEventListener('playing',()=>show(true));
+  video.addEventListener('error',()=>show(false));
+  const attempt=video.play();
+  if(attempt&&typeof attempt.catch==='function')attempt.catch(()=>show(false));
+ };
+ const stop=()=>{video.pause();show(false)};
+ if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){obs.disconnect();start()}},{rootMargin:'100px'});
+  obs.observe(video);
+ }else{start()}
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){stop()}else if(eligible.matches){if(loaded){video.play().catch(()=>show(false))}else{start()}}});
+ eligible.addEventListener?.('change',e=>{if(!e.matches)stop();else start()});
+ button.addEventListener('click',()=>{
+  if(video.paused){video.play().catch(()=>show(false));button.textContent='영상 일시정지';button.setAttribute('aria-pressed','false')}
+  else{video.pause();video.classList.remove('is-playing');button.hidden=false;button.textContent='영상 재생';button.setAttribute('aria-pressed','true')}
+ });
+ video.addEventListener('play',()=>{button.textContent='영상 일시정지';button.setAttribute('aria-pressed','false')});
+})();
 
 /* INTEGRATED_APP_START */
 const el=id=>document.getElementById(id);
