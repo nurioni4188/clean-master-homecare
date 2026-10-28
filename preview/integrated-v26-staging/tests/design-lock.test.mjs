@@ -28,3 +28,18 @@ test('no Production, anonymous service keys or real payment activation',()=>{
  assert.doesNotMatch(app,/env\\.VITE_CM_(?:SERVICE_ROLE|SECRET_KEY)/i);
  assert.doesNotMatch(app,/status\s*[:=]\s*['"]active['"]/);
 });
+
+test('2번 theme styles and service/pricing/helper sections remain exactly unchanged',()=>{
+ const style=x=>x.slice(x.indexOf('<style>'),x.indexOf('</style>')+'</style>'.length);
+ assert.equal(style(derived),style(frozen),'Original typography, cinematic CSS and responsive rules must not change');
+ const source=frozen.slice(frozen.indexOf('<section id="service">'),frozen.indexOf('<section id="booking">')).trim();
+ const snapshot=derived.slice(derived.indexOf('<section id="service">'),derived.indexOf('<!-- RC16 isolated staging:')).trim();
+ assert.equal(snapshot,source,'All marketing, prices, client-only consultation fields must remain identical');
+});
+
+test('new Staging menu links navigate to matching authenticated sections',()=>{
+ for(const [anchor,id] of [['#booking-section','booking-section'],['#subscription-section','subscription-section'],['#mypage-section','mypage-section'],['#admin-section','admin-section']]){
+  assert.ok(derived.includes('href="'+anchor+'"'),'missing link '+anchor);
+  assert.ok(derived.includes('id="'+id+'"'),'missing destination '+id);
+ }
+});
