@@ -18,8 +18,17 @@ const expectCode=(fn,code)=>assert.throws(fn,e=>e.code===code);
 
 test('homepage retains original services and price labels but no PII placeholders',()=>{
  for(const text of ['Clean Master','입주·이사청소','거주청소','정기 홈케어','70,000원~150,000원','100,000원~200,000원','id="helper"','id="booking"','id="subscription"','id="admin"','help-generate'])assert.ok(html.includes(text),text);
- for(const forbidden of [/\/api\/contact/,/\/api\/admin/,/fetch\s*\(/,/https?:\/\//,/tel:/,/sms:/,/localStorage/,/sessionStorage/,/SUPABASE_/,/test_sk_/,/live_sk_/,/1588-0000/,/010-1234/])assert.doesNotMatch(html,forbidden);
+ for(const forbidden of [/\/api\/contact/,/\/api\/admin/,/fetch\s*\(/,/tel:/,/sms:/,/localStorage/,/sessionStorage/,/SUPABASE_/,/test_sk_/,/live_sk_/,/1588-0000/,/010-1234/])assert.doesNotMatch(html,forbidden);
  assert.match(html,/connect-src &#39;none&#39;/);
+ assert.match(html,/media-src https:\/\/videos\.pexels\.com/);
+ assert.match(html,/img-src data: https:\/\/images\.pexels\.com/);
+ const externalUrls=html.match(/https?:\/\/[^\\s"'<>]+/g)||[];
+ assert.ok(externalUrls.length>=2,'Expected official licensed hero video and poster');
+ for(const url of externalUrls){
+  const hostname=new URL(url.replaceAll('&amp;','&')).hostname;
+  assert.ok(['videos.pexels.com','images.pexels.com','www.pexels.com'].includes(hostname),'Unexpected remote host: '+hostname);
+ }
+
 });
 
 test('synthetic-only customer registration, repeated customer guard',()=>{
@@ -58,4 +67,17 @@ test('all Preview data is isolated to a browser instance and reset on reload',()
  a.customerAdd({name:'TEST customer NEW'});
  assert.equal(a.customers().length,1);
  assert.equal(b.customers().length,0);
+});
+
+test('cinematic hero includes actual video with mobile/static fallback and controls',()=>{
+ assert.match(html,/id="hero-video"/);
+ assert.match(html,/5744421-uhd_3840_2160_30fps\.mp4/);
+ assert.match(html,/id="hero-pause"/);
+ assert.match(html,/muted loop playsinline preload="none"/);
+ assert.match(html,/prefers-reduced-motion: no-preference/);
+ assert.match(html,/navigator\.connection\?\.saveData/);
+ assert.match(html,/Pexels \/ Abdullah/);
+ assert.match(html,/깨끗한 공간,/);
+ assert.match(html,/더 여유로운 일상/);
+ assert.match(html,/class="hero-credit"/);
 });
